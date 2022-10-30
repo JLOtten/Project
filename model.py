@@ -1,17 +1,18 @@
 """Models for Coders' Boost app"""
 
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin, LoginManager
+from flask_dance.consumer.storage.sqla import OAuthConsumerMixin
 
 db = SQLAlchemy()
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     """A User"""
 
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key = True, autoincrement = True,)
     email = db.Column(db.String, unique = True,)
-    password = db.Column(db.String)
     username = db.Column(db.String)
 
     encouragements = db.relationship("UserEncouragement", back_populates= "user")
@@ -30,8 +31,7 @@ class Encouragement(db.Model):
     text = db.Column(db.String, unique = True,)
     language = db.Column(db.String,)
     created_at = db.Column(db.DateTime,)
-    favorited_at = db.Column(db.DateTime,nullable)
-    last_viewed_at = db.Column(db.DateTime,Nullable)
+    
 
 class UserEncouragement(db.Model):
     """A middle table to connect Users and Compliments"""
@@ -42,8 +42,20 @@ class UserEncouragement(db.Model):
     encouragement_id = db.Column(db.Integer, db.ForeignKey("encouragements.id"),)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"),)
     created_at = db.Column(db.DateTime,)
+    favorited_at = db.Column(db.DateTime, nullable=True)
+    last_viewed_at = db.Column(db.DateTime, nullable=True)
 
     user = db.relationship("User", back_populates = "encouragements")
+
+class OAuth(OAuthConsumerMixin, db.Model):
+    user_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    user = db.relationship(User)
+
+login_manager = LoginManager()
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 def connect_to_db(flask_app, db_uri="postgresql:///coders_boost", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
@@ -54,8 +66,6 @@ def connect_to_db(flask_app, db_uri="postgresql:///coders_boost", echo=True):
     db.init_app(flask_app)
 
     print("Connected to the db!")
-
-
 
 if __name__ == "__main__":
     from server import app
