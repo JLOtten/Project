@@ -4,8 +4,9 @@
 
 {% block body %}
 
-<h1>My Profile</h1>
-
+{% if current_user.is_authenticated %}
+<h1>Welcome back {{current_user.username}}!😄</h1>
+{% endif %}
 <ul>
   {% for user_encouragement in user_encouragements %}
   <li>

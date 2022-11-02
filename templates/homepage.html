@@ -4,37 +4,29 @@
 
 {% block body %}
 
-  <h1>Welcome!</h1>
-
+<h1>Welcome to Coder's Boost! </h1>
+<p>A place where you can come when you just need a little boost.
+  We know it’s challenging to learn how to code, but we want you to know that you belong in tech development
+  and in fact, you are sorely needed! </p>
+  <!--Get encouragement button starts here -->
+{% if encouragement %}
 <p>{{encouragement.text}}</p>
-  
-<div style="text-align:center;">
-  {% if current_user.is_authenticated %}
-    <h1>You are logged in as {{current_user.username}}</h1>
-    <br><br>
-    <a href="{{url_for('logout')}}" class="btn btn-danger">Logout</a>
-  {% else %}
-    <!-- GitHub button starts here -->
-    <a href="{{url_for('login')}}"  class="btn btn-secondary">
-      <i class="fa fa-github fa-fw"></i>
-      <span>Login with GitHub</span>
-    </a>
-    <!-- GitHub button ends here -->
-  {% endif %}
-</div>
+{% endif %}
+<form action="/" method="post">
+  <button type="submit" class="btn btn-success">Get your daily boost
+  </button>
+</form>
 
-<div style="text-align:center;">
-  {% if current_user.is_authenticated %}
+<div style="text-align:left;">
+  {% if current_user.is_authenticated and encouragement %}
     <!-- Favorite button starts here -->
     <form action="/user-encouragement" method="post">
       <input type="hidden" name="user_id" id="user_id" value={{current_user.id}}><br>
       <input type="hidden" name="encouragement_id" id="encouragement_id" value={{encouragement.id}}><br><br>
-      <input type="submit" name="submit" id="submit" value="Submit">
+      <button type="submit" class="btn">
+        <i class="fa fa-heart" style="color: crimson;"></i>
+      </button>
     </form>
-    <a class="btn btn-secondary">
-      <i class="fa fa-heart fa-fw"></i>
-      <span>Save encouragement</span>
-    </a>
     <!-- Favorite button ends here -->
   {% endif %}
 </div>

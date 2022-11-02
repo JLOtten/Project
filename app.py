@@ -31,10 +31,11 @@ with app.app_context():
 def profile():
     """View function for user profile page that displays personaliazed welcome, language
     preference and favorited encouragements by user."""
-
+    if current_user.is_authenticated:
      #show favorited encouragements by user
-    user_encouragements = UserEncouragement.query.filter(UserEncouragement.user_id==current_user.id, UserEncouragement.favorited_at != None).all()
-    #seats = Seat.query.filter(Seat.invite != None).all()
+        user_encouragements = UserEncouragement.query.filter(UserEncouragement.user_id==current_user.id, UserEncouragement.favorited_at != None).all()
+    else:
+        flash("Please log in with github to view your profile page.")
     #if not logged in flash message that user must be logged in 
     #TODO:
 
@@ -56,9 +57,8 @@ def user_encouragement():
 def login():
     if not github.authorized:
         return redirect(url_for("github.login"))
-    res = github.get("/user")
 
-    return f"You are @{res.json()['login']} on GitHub"
+    return redirect(url_for("homepage"))
 
 @app.route("/logout") #Github OAuth route
 @login_required
@@ -68,18 +68,21 @@ def logout():
 
 #write function to handle if a user is logged in or not.
 
-@app.route("/")
+@app.route("/", methods=("GET", "POST"))
 def homepage():
     """View function for homepage."""
-    #grab a random encouragement
-    encouragement = Encouragement.query.order_by(func.random()).first()
-    #if the user is logged in, save that they've seen the encouragement
-    if current_user.is_authenticated:
-        encouragement = get_next_encouragement(current_user)
-        save_encouragement_seen(current_user, encouragement)
+    #grab a random encouragement, if they've hit the button
+    encouragement = None
+    if request.method == "POST":
+        if current_user.is_authenticated:
+            #if the user is logged in, save that they've seen the encouragement
+            encouragement = get_next_encouragement(current_user)
+            save_encouragement_seen(current_user, encouragement)
+        else:
+            encouragement = Encouragement.query.order_by(func.random()).first()
+
+    #handle for if user is not logged in and tries to favorite an encouragement
     
-    #call crud function: get_next_encouragement() and 
-    #call crud function: save_encouragment_seen()
     return render_template("homepage.html", encouragement=encouragement)
 
 @app.route("/resources")
