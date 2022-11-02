@@ -32,6 +32,7 @@ class Encouragement(db.Model):
     language = db.Column(db.String,)
     created_at = db.Column(db.DateTime,)
     
+    user_encouragements = db.relationship("UserEncouragement", back_populates = "encouragement")
 
 class UserEncouragement(db.Model):
     """A middle table to connect Users and Compliments"""
@@ -46,6 +47,7 @@ class UserEncouragement(db.Model):
     last_viewed_at = db.Column(db.DateTime, nullable=True)
 
     user = db.relationship("User", back_populates = "encouragements")
+    encouragement = db.relationship("Encouragement", back_populates = "user_encouragements")
 
 class OAuth(OAuthConsumerMixin, db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(User.id))
@@ -68,7 +70,7 @@ def connect_to_db(flask_app, db_uri="postgresql:///coders_boost", echo=True):
     print("Connected to the db!")
 
 if __name__ == "__main__":
-    from server import app
+    from app import app
 
     # Call connect_to_db(app, echo=False) if your program output gets
     # too annoying; this will tell SQLAlchemy not to print out every

@@ -12,7 +12,7 @@ os.system("dropdb coders_boost")
 os.system("createdb coders_boost")
 
 def seed_database():
-    from server import app
+    from app import app
     # Call connect_to_db(app, echo=False) if your program output gets
     # too annoying; this will tell SQLAlchemy not to print out every
     # query it executes.

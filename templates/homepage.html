@@ -23,4 +23,20 @@
   {% endif %}
 </div>
 
+<div style="text-align:center;">
+  {% if current_user.is_authenticated %}
+    <!-- Favorite button starts here -->
+    <form action="/user-encouragement" method="post">
+      <input type="hidden" name="user_id" id="user_id" value={{current_user.id}}><br>
+      <input type="hidden" name="encouragement_id" id="encouragement_id" value={{encouragement.id}}><br><br>
+      <input type="submit" name="submit" id="submit" value="Submit">
+    </form>
+    <a class="btn btn-secondary">
+      <i class="fa fa-heart fa-fw"></i>
+      <span>Save encouragement</span>
+    </a>
+    <!-- Favorite button ends here -->
+  {% endif %}
+</div>
+
 {% endblock %}

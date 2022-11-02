@@ -1,11 +1,11 @@
 """Server for Coder's Boost app"""
 
 from flask import (Flask, render_template, request, flash, session, redirect, jsonify, url_for)
-from crud import save_encouragement_seen, get_next_encouragement
-from model import Encouragement, connect_to_db, db, login_manager
+from crud import save_encouragement_seen, get_next_encouragement, save_user_encouragement
+from model import Encouragement, connect_to_db, db, login_manager, UserEncouragement
 from flask_dance.contrib.github import github
 from flask_login import logout_user, login_required, current_user
-from  sqlalchemy.sql.expression import func
+from sqlalchemy.sql.expression import func
 from oauth import github_blueprint
 
 from jinja2 import StrictUndefined
@@ -28,11 +28,31 @@ with app.app_context():
     db.create_all()
 
 @app.route("/profile")
-def user_profile():
-    """User profile page that displays personaliazed welcome, language
+def profile():
+    """View function for user profile page that displays personaliazed welcome, language
     preference and favorited encouragements by user."""
 
-@app.route("/github")
+     #show favorited encouragements by user
+    user_encouragements = UserEncouragement.query.filter(UserEncouragement.user_id==current_user.id, UserEncouragement.favorited_at != None).all()
+    #seats = Seat.query.filter(Seat.invite != None).all()
+    #if not logged in flash message that user must be logged in 
+    #TODO:
+
+    #make a share button
+
+    return render_template("profile.html", user_encouragements=user_encouragements)
+
+@app.route("/user-encouragement", methods=["POST"]) #hidden route that grabs what I need to save fav_encouragements to profile page
+def user_encouragement():
+    """Gets user_id and encouragement_id and saves it."""
+
+    user_id = int(request.form.get("user_id"))
+    encouragement_id = int(request.form.get("encouragement_id"))
+    save_user_encouragement(user_id, encouragement_id)
+
+    return redirect(url_for("homepage"))
+
+@app.route("/github") #Github OAuth route
 def login():
     if not github.authorized:
         return redirect(url_for("github.login"))
@@ -40,7 +60,7 @@ def login():
 
     return f"You are @{res.json()['login']} on GitHub"
 
-@app.route("/logout")
+@app.route("/logout") #Github OAuth route
 @login_required
 def logout():
     logout_user()
@@ -50,7 +70,7 @@ def logout():
 
 @app.route("/")
 def homepage():
-    """Home"""
+    """View function for homepage."""
     #grab a random encouragement
     encouragement = Encouragement.query.order_by(func.random()).first()
     #if the user is logged in, save that they've seen the encouragement
@@ -62,7 +82,11 @@ def homepage():
     #call crud function: save_encouragment_seen()
     return render_template("homepage.html", encouragement=encouragement)
 
+@app.route("/resources")
+def resources():
+    """View function for resources page."""
 
+    return render_template("resources.html")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

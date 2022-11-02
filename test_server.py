@@ -1,7 +1,7 @@
 """Test for coders boost app."""
 
 import unittest
-import server
+import app
 
 
 class ServerTests(unittest.TestCase):
@@ -10,8 +10,8 @@ class ServerTests(unittest.TestCase):
     def setUp(self):
         """Code to run before every test."""
 
-        self.client = server.app.test_client()
-        server.app.config['TESTING'] = True
+        self.client = app.app.test_client()
+        app.app.config['TESTING'] = True
 
     def test_homepage(self):
         """Can we reach the homepage?"""

@@ -11,6 +11,16 @@ def create_user(email, password):
 
     return user
 
+def save_encouragement(text):
+    """Save generated encouragements from Open AI API"""
+
+    #TODO: handle this error: psycopg2.errors.UniqueViolation
+
+    #make an encouragement object, from Encouragement class, with attribute text= any given text passes as arg
+    encouragement = Encouragement(text=text)
+    db.session.add(encouragement) #add and commit encouragement to the database session
+    db.session.commit()
+
 def get_next_encouragement(user):
     """Finds the next encouragment to give to a user.
     If an encouragment has not been used, it will show that.
@@ -54,13 +64,18 @@ def save_encouragement_seen(user, encouragement):
         db.session.add(encouragement_view)
         db.session.commit()
 
+def save_user_encouragement(user_id, encouragement_id):
+    """Saves a favorited encouragement to a user's profile page."""
+    #gets seen encouragements by using user_id and encouragement_id's
+    query = UserEncouragement.query.filter_by(user_id=user_id, encouragement_id=encouragement_id) #makes general query
+    try: #save fav_encouragement to db field favorited_at
+        fav_encouragement=query.one() #gets one record from the query
+        fav_encouragement.favorited_at = datetime.now() #adds the timestamp
+        db.session.add(fav_encouragement)
+        db.session.commit()
+    except NoResultFound:      #handles case if user tries to favorite encouragement that isn't in db for some reason
+        fav_encouragement = UserEncouragement(user_id=user_id, encouragement_id=encouragement_id, favorited_at=datetime.now())
+        db.session.add(fav_encouragement)
+        db.session.commit()
 
-#def get_encouragement(encouragements):
-     #get all encouragements in a list: 
- #   encouragements = Encouragement.query.all()
-     #loop thru encouragements to determine if it has not been seen, if that's true, return it
-  #  for encouragement in encouragements:
-   #     pick_enc = random.choice(encouragements)
-
-    #    return pick_enc
-
+    

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Coder's Boost {% endblock %}
+
+{% block body %}
+
+<h1>My Profile</h1>
+
+<ul>
+  {% for user_encouragement in user_encouragements %}
+  <li>
+      {{ user_encouragement.encouragement.text }}
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
