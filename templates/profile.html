@@ -9,9 +9,13 @@
 {% endif %}
 <ul>
   {% for user_encouragement in user_encouragements %}
+  <div id="encouragement-{{ user_encouragement.encouragement_id }}">
   <li>
       {{ user_encouragement.encouragement.text }}
+  <!--add a delete button that connects to delete view function in app.py-->
+  <button id="{{ user_encouragement.encouragement_id }}" onClick="deleteFavoriteEncouragement(this.id)">Delete</button>
   </li>
+</div>
   {% endfor %}
 </ul>
 

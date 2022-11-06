@@ -35,13 +35,27 @@ def profile():
      #show favorited encouragements by user
         user_encouragements = UserEncouragement.query.filter(UserEncouragement.user_id==current_user.id, UserEncouragement.favorited_at != None).all()
     else:
-        flash("Please log in with github to view your profile page.")
-    #if not logged in flash message that user must be logged in 
-    #TODO:
-
-    #make a share button
-
+        #if not logged in flash message that user must be logged in 
+        flash("Please log in with github to view your profile page.")  #try to fis this flash message...it's not showing up. (look this up)
+        return redirect(url_for("homepage"))
+    
     return render_template("profile.html", user_encouragements=user_encouragements)
+
+@app.route("/delete-favorite", methods=["POST"])
+def delete_favorite():
+    """Deletes a favorited encouragement from a user's profile page."""
+
+    content = request.json
+    #get a specific encouragement on a user's profile, using the user_id and the encouragement_id
+    encouragement_id = int(content.get("encouragement_id"))
+    #getting one user favorited encouragement, take in the logged in user (current_user_id) so some user can't delete another user's encouragement
+    user_encouragement = UserEncouragement.query.filter(UserEncouragement.user_id==current_user.id, UserEncouragement.encouragement_id==encouragement_id).one()
+    #reset favorited_at timestamp to None (to "delete") favorited encouragement
+    user_encouragement.favorited_at = None
+    db.session.add(user_encouragement)
+    db.session.commit()
+
+    return ""
 
 @app.route("/user-encouragement", methods=["POST"]) #hidden route that grabs what I need to save fav_encouragements to profile page
 def user_encouragement():
@@ -66,24 +80,33 @@ def logout():
     logout_user()
     return redirect(url_for("homepage"))
 
-#write function to handle if a user is logged in or not.
-
 @app.route("/", methods=("GET", "POST"))
 def homepage():
     """View function for homepage."""
     #grab a random encouragement, if they've hit the button
     encouragement = None
-    if request.method == "POST":
+    if request.method == "POST": #when form is submitted (button) to get a boost
         if current_user.is_authenticated:
             #if the user is logged in, save that they've seen the encouragement
             encouragement = get_next_encouragement(current_user)
             save_encouragement_seen(current_user, encouragement)
         else:
             encouragement = Encouragement.query.order_by(func.random()).first()
-
-    #handle for if user is not logged in and tries to favorite an encouragement
     
+    encouragement_id = request.args.get('encouragement_id') #get a specific encouragement from the query string parameter
+                                      #convert to integer because it's returned as a string
+    if encouragement_id: #check if encouragement_id in url (if enc_id is not = None)
+        encouragement_id = int(encouragement_id)
+        #FIX: handles for if id is not an integer (edgecase)
+        #if encouragement_id:
+        encouragement = Encouragement.query.filter_by(id=encouragement_id).first() #get a specific encouragement, filtering by id
+
+        #else: 
+            #return redirect(url_for("homepage"))
+
     return render_template("homepage.html", encouragement=encouragement)
+
+# https://stackoverflow.com/questions/34558264/fetch-api-with-cookie
 
 @app.route("/resources")
 def resources():
