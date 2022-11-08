@@ -8,6 +8,7 @@ from flask_login import logout_user, login_required, current_user
 from sqlalchemy.sql.expression import func
 from oauth import github_blueprint
 
+
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
@@ -45,6 +46,7 @@ def profile():
 def delete_favorite():
     """Deletes a favorited encouragement from a user's profile page."""
 
+    #had to get the json body from the post request because before, it was trying to convert None to an integer
     content = request.json
     #get a specific encouragement on a user's profile, using the user_id and the encouragement_id
     encouragement_id = int(content.get("encouragement_id"))
