@@ -4,11 +4,11 @@
 
 {% block body %}
 
-<h1>Welcome to Coder's Boost! </h1>
-<p>A place where you can come when you just need a little boost.
+<h1>{{ _("Welcome to Coder's Boost!") }}</h1>
+<p>{{ _('A place where you can come when you just need a little boost.
   We know it’s challenging to learn how to code, but we want you to 
   know that you belong in tech development
-  and in fact, you are sorely needed! </p>
+  and in fact, you are sorely needed!') }}</p>
   <!--Get encouragement button starts here -->
 {% if encouragement %}
 <p>{{encouragement.text}}</p>
@@ -26,11 +26,11 @@
 <input type="text" value="{{ url_for('homepage', encouragement_id=encouragement.id, _external=True) }}" id="copyUrl">
 
 <!-- The button used to copy the text -->
-<button onclick="copyText()">Copy link</button>
+<button onclick="copyText()">{{ _('Copy link') }}</button>
 
 {% endif %}
 <form action="/" method="post">
-  <button type="submit" class="btn btn-success">Get your daily boost
+  <button type="submit" class="btn btn-success">{{ _('Get your daily boost') }}
   </button>
 </form>
 

@@ -5,7 +5,7 @@
 {% block body %}
 
 {% if current_user.is_authenticated %}
-<h1>Welcome back {{current_user.username}}!😄</h1>
+<h1>{{ _('Welcome back {{current_user.username') }}!😄</h1>
 {% endif %}
 <ul>
   {% for user_encouragement in user_encouragements %}
@@ -13,7 +13,7 @@
   <li>
       {{ user_encouragement.encouragement.text }}
   <!--add a delete button that connects to delete view function in app.py-->
-  <button id="{{ user_encouragement.encouragement_id }}" onClick="deleteFavoriteEncouragement(this.id)">Delete</button>
+  <button id="{{ user_encouragement.encouragement_id }}" onClick="deleteFavoriteEncouragement(this.id)">{{ _('Delete') }}</button>
   </li>
 </div>
   {% endfor %}

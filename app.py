@@ -7,7 +7,7 @@ from flask_dance.contrib.github import github
 from flask_login import logout_user, login_required, current_user
 from sqlalchemy.sql.expression import func
 from oauth import github_blueprint
-
+from flask_babel import Babel
 
 from jinja2 import StrictUndefined
 
@@ -15,6 +15,8 @@ app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 app.register_blueprint(github_blueprint, url_prefix="/login")
+babel = Babel(app)
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 
 app.config["SQLALCHEMY_DATABASE_URI"] ="postgresql:///coders_boost"
 app.config["SQLALCHEMY_ECHO"] = True
@@ -115,6 +117,11 @@ def resources():
     """View function for resources page."""
 
     return render_template("resources.html")
+
+@babel.localeselector
+def get_locale():
+   
+    return 'es'
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

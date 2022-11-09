@@ -1,0 +1,56 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-11-07 21:31-0800\n"
+"PO-Revision-Date: 2022-11-07 21:32-0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+
+#: templates/homepage.html:7
+msgid "Welcome to Coder's Boost!"
+msgstr "¡Bienvenidos a Coder's Boost!"
+
+#: templates/homepage.html:8
+msgid ""
+"A place where you can come when you just need a little boost.\n"
+"  We know it’s challenging to learn how to code, but we want you to \n"
+"  know that you belong in tech development\n"
+"  and in fact, you are sorely needed!"
+msgstr ""
+
+#: templates/homepage.html:33
+msgid "Get your daily boost"
+msgstr ""
+
+#: templates/navbar.html:12
+msgid "Home"
+msgstr ""
+
+#: templates/navbar.html:15
+msgid "My Page"
+msgstr ""
+
+#: templates/navbar.html:18
+msgid "Resources"
+msgstr ""
+
+#: templates/navbar.html:22
+msgid "Logout"
+msgstr ""
+
+#: templates/navbar.html:27
+msgid "Login with GitHub"
+msgstr ""
+
