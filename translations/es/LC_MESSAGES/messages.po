@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-07 21:31-0800\n"
+"POT-Creation-Date: 2022-11-09 14:20-0800\n"
 "PO-Revision-Date: 2022-11-07 21:32-0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -29,28 +29,59 @@ msgid ""
 "  know that you belong in tech development\n"
 "  and in fact, you are sorely needed!"
 msgstr ""
+"Un lugar al que puedes venir cuando solo necesitas un pequeño impulso.\n"
+"  Sabemos que es un desafío aprender a codificar, \n"
+"  pero queremos que sepas que perteneces al desarrollo tecnológico\n"
+"  y, de hecho, ¡te necesitamos!"
+
+#: templates/homepage.html:29
+msgid "Copy link"
+msgstr "Copiar link"
 
 #: templates/homepage.html:33
 msgid "Get your daily boost"
-msgstr ""
+msgstr "Obtén tu impulso diario"
 
 #: templates/navbar.html:12
 msgid "Home"
-msgstr ""
+msgstr "Hogar"
 
 #: templates/navbar.html:15
 msgid "My Page"
-msgstr ""
+msgstr "Mi página"
 
 #: templates/navbar.html:18
 msgid "Resources"
-msgstr ""
+msgstr "Recursos"
 
 #: templates/navbar.html:22
 msgid "Logout"
-msgstr ""
+msgstr "Cerrar sesión"
 
 #: templates/navbar.html:27
 msgid "Login with GitHub"
-msgstr ""
+msgstr "Iniciar sesión con Github"
+
+#: templates/profile.html:8
+msgid "Welcome back"
+msgstr "¡Bienvenido de nuevo "
+
+#: templates/profile.html:16
+msgid "Delete"
+msgstr "Eliminar"
+
+#: templates/resources.html:16
+msgid "Resources:"
+msgstr "Recursos"
+
+#: templates/resources.html:18
+msgid "Websites"
+msgstr "Recursos del Sitio Web"
+
+#: templates/resources.html:44
+msgid "Articles"
+msgstr "Artículos"
+
+#~ msgid "Welcome back {{current_user.username"
+#~ msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-07 21:31-0800\n"
+"POT-Creation-Date: 2022-11-09 14:23-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,10 @@ msgid ""
 "  We know it’s challenging to learn how to code, but we want you to \n"
 "  know that you belong in tech development\n"
 "  and in fact, you are sorely needed!"
+msgstr ""
+
+#: templates/homepage.html:29
+msgid "Copy link"
 msgstr ""
 
 #: templates/homepage.html:33
@@ -51,5 +55,25 @@ msgstr ""
 
 #: templates/navbar.html:27
 msgid "Login with GitHub"
+msgstr ""
+
+#: templates/profile.html:8
+msgid "Welcome back"
+msgstr ""
+
+#: templates/profile.html:16
+msgid "Delete"
+msgstr ""
+
+#: templates/resources.html:16
+msgid "Resources:"
+msgstr ""
+
+#: templates/resources.html:18
+msgid "Websites"
+msgstr ""
+
+#: templates/resources.html:44
+msgid "Articles"
 msgstr ""
 

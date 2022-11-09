@@ -5,7 +5,7 @@
 {% block body %}
 
 {% if current_user.is_authenticated %}
-<h1>{{ _('Welcome back {{current_user.username') }}!😄</h1>
+<h1>{{ _('Welcome back') }} {{current_user.username}}!😄</h1>
 {% endif %}
 <ul>
   {% for user_encouragement in user_encouragements %}
