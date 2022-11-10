@@ -31,5 +31,14 @@
         </li>
       </ul>
     </div>
+    <div class="dropdown" id="language-picker">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+        {{ _('Language') }}
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="language-dropdown">
+        <li><a class="dropdown-item" id="en" href="{{ url_for('homepage') }}" onClick="selectLanguage(this.id)">{{ _('English') }}</a></li>
+        <li><a class="dropdown-item" id="es" href="{{ url_for('homepage') }}" onClick="selectLanguage(this.id)">{{ _('Spanish') }}</a></li>
+      </ul>
+    </div>
   </div>
 </nav>

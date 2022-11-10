@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-09 14:23-0800\n"
+"POT-Creation-Date: 2022-11-09 15:58-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,6 +55,18 @@ msgstr ""
 
 #: templates/navbar.html:27
 msgid "Login with GitHub"
+msgstr ""
+
+#: templates/navbar.html:36
+msgid "Language"
+msgstr ""
+
+#: templates/navbar.html:39
+msgid "English"
+msgstr ""
+
+#: templates/navbar.html:40
+msgid "Spanish"
 msgstr ""
 
 #: templates/profile.html:8

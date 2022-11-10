@@ -121,7 +121,19 @@ def resources():
 @babel.localeselector
 def get_locale():
    
-    return 'es'
+    if "language" in session: #check if language (en or es) is in session
+        return session['language'] # if so, return session language user chose
+    
+    return request.accept_languages.best_match(['en', 'es']) #if they don't have language set, return what browser is set to
+
+@app.route("/language/<language>") #will use this <language> variable to populate if es or eng is chosen, so you don't have to use a form
+def language(language):
+    """Changes site from English to Spanish"""
+
+    if language in {'en', 'es'}:
+        session['language'] = language
+
+    return ""
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

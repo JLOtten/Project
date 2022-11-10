@@ -29,3 +29,14 @@ function copyText() {
       console.error('Error:', error); // log an error to the console
     });
   }
+
+  //language selection dropdown button triggers translation of site to en or es
+  function selectLanguage(language) {
+    fetch(`${window.location.protocol}//${window.location.host}/language/${language}`, { //changes language using variable in route
+      method: 'GET',
+      credentials: 'include',  //sends user credentials, so it knows which user is sending request
+    })
+    .then(function () {   //anonymous function, not doing anything with response (vs code suggested this)
+      return false
+    })
+  }
