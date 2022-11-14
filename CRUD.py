@@ -1,4 +1,4 @@
-"""Define CreateReadUpdateDestroy related functions."""
+"""Define Create Read Update Delete related functions."""
 
 from model import db, User, Encouragement, UserEncouragement, connect_to_db
 from datetime import datetime
@@ -11,24 +11,24 @@ def create_user(email, password):
 
     return user
 
-def save_encouragement(text):
+def save_encouragement(text, language):
     """Save generated encouragements from Open AI API"""
 
     #TODO: handle this error: psycopg2.errors.UniqueViolation
 
     #make an encouragement object, from Encouragement class, with attribute text= any given text passes as arg
-    encouragement = Encouragement(text=text)
+    encouragement = Encouragement(text=text, language=language)
     db.session.add(encouragement) #add and commit encouragement to the database session
     db.session.commit()
 
-def get_next_encouragement(user):
+def get_next_encouragement(user, language):
     """Finds the next encouragment to give to a user.
     If an encouragment has not been used, it will show that.
     If all encouragments have been shown, it will show the one
     seen least recently."""
 
     #get all encouragements in a list: 
-    encouragements = Encouragement.query.all()
+    encouragements = Encouragement.query.filter_by(language=language).all() #filter encouragements by langugage
      #loop thru encouragements to determine if it has not been seen, if that's true, return it
     for encouragement in encouragements:
 
@@ -51,7 +51,7 @@ def save_encouragement_seen(user, encouragement):
 
     #sql alchemy, create a UserEncouragment instance and save to db
     #similar to OAuth file lines 30-37
-    #query = UserEncouragement.query.filter_by(#don't know what to put here)
+    
 
     query = UserEncouragement.query.filter_by(user_id=user.id, encouragement_id=encouragement.id)
     try:

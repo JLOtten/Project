@@ -1,15 +1,17 @@
 """Server for Coder's Boost app"""
 
-from flask import (Flask, render_template, request, flash, session, redirect, jsonify, url_for)
-from crud import save_encouragement_seen, get_next_encouragement, save_user_encouragement
-from model import Encouragement, connect_to_db, db, login_manager, UserEncouragement
-from flask_dance.contrib.github import github
-from flask_login import logout_user, login_required, current_user
-from sqlalchemy.sql.expression import func
-from oauth import github_blueprint
+from flask import (Flask, flash, redirect, render_template, request, session,
+                   url_for)
 from flask_babel import Babel
-
+from flask_dance.contrib.github import github
+from flask_login import current_user, login_required, logout_user
 from jinja2 import StrictUndefined
+from sqlalchemy.sql.expression import func
+
+from crud import (get_next_encouragement, save_encouragement_seen,
+                  save_user_encouragement)
+from model import Encouragement, UserEncouragement, db, login_manager
+from oauth import github_blueprint
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -92,11 +94,12 @@ def homepage():
     if request.method == "POST": #when form is submitted (button) to get a boost
         if current_user.is_authenticated:
             #if the user is logged in, save that they've seen the encouragement
-            encouragement = get_next_encouragement(current_user)
+            encouragement = get_next_encouragement(current_user, get_locale()) #get the language with get_locale()
             save_encouragement_seen(current_user, encouragement)
         else:
-            encouragement = Encouragement.query.order_by(func.random()).first()
-    
+            encouragement = Encouragement.query.filter_by(language=get_locale()).order_by(func.random()).first()
+        #get encouragement filtered by language (with get_locale()) and return one random pick from db
+        
     encouragement_id = request.args.get('encouragement_id') #get a specific encouragement from the query string parameter
                                       #convert to integer because it's returned as a string
     if encouragement_id: #check if encouragement_id in url (if enc_id is not = None)

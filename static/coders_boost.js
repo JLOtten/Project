@@ -37,6 +37,6 @@ function copyText() {
       credentials: 'include',  //sends user credentials, so it knows which user is sending request
     })
     .then(function () {   //anonymous function, not doing anything with response (vs code suggested this)
-      return false
+      return false 
     })
   }
