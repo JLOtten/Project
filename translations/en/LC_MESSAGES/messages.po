@@ -1,4 +1,4 @@
-# Spanish translations for PROJECT.
+# English translations for PROJECT.
 # Copyright (C) 2022 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-11-14 16:39-0800\n"
-"PO-Revision-Date: 2022-11-07 21:32-0800\n"
+"PO-Revision-Date: 2022-11-14 14:46-0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: es\n"
-"Language-Team: es <LL@li.org>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,98 +19,83 @@ msgstr ""
 "Generated-By: Babel 2.11.0\n"
 
 #: templates/homepage.html:6
-#, fuzzy
 msgid "Coder's Boost"
-msgstr "¡Bienvenidos a Coder's Boost!"
+msgstr ""
 
 #: templates/homepage.html:7
 msgid "Intro"
-msgstr ""
-"Un lugar donde los codificadores pueden venir cuando solo necesitas un pequeño impulso.."
-
+msgstr "A place where coders can come when you just need a little boost."
 
 #: templates/homepage.html:27
 msgid "Copy link"
-msgstr "Copiar link"
+msgstr ""
 
 #: templates/homepage.html:31
 msgid "Get your daily boost"
-msgstr "Obtén tu impulso diario"
+msgstr ""
 
 #: templates/navbar.html:12
 msgid "Home"
-msgstr "Hogar"
+msgstr ""
 
 #: templates/navbar.html:15
 msgid "My Page"
-msgstr "Mi página"
+msgstr ""
 
 #: templates/navbar.html:18
 msgid "Resources"
-msgstr "Recursos"
+msgstr ""
 
 #: templates/navbar.html:22
 msgid "Logout"
-msgstr "Cerrar sesión"
+msgstr ""
 
 #: templates/navbar.html:27
 msgid "Login with GitHub"
-msgstr "Iniciar sesión con Github"
+msgstr ""
 
 #: templates/navbar.html:36
 msgid "Language"
-msgstr "Idioma"
+msgstr ""
 
 #: templates/navbar.html:39
 msgid "English"
-msgstr "Inglés"
+msgstr ""
 
 #: templates/navbar.html:40
 msgid "Spanish"
-msgstr "Español"
+msgstr ""
 
 #: templates/profile.html:8
 msgid "Welcome back"
-msgstr "¡Bienvenido de nuevo "
+msgstr ""
 
 #: templates/profile.html:16
 msgid "Delete"
-msgstr "Eliminar"
+msgstr ""
 
 #: templates/resources.html:16
 msgid "Resources:"
-msgstr "Recursos"
+msgstr ""
 
 #: templates/resources.html:18
 msgid "Coding Communities"
-msgstr "Comunidades de Codificación"
+msgstr ""
 
 #: templates/resources.html:37
 msgid "Inspiring Articles or Sites"
-msgstr "Artículos o Sitios Inspiradores"
+msgstr ""
 
 #: templates/resources.html:58
 msgid "Related Research"
-msgstr "Investigación Relacionada"
+msgstr ""
 
-#~ msgid ""
-#~ "A place where you can come when you just need a little boost.\n"
-#~ "        We know it’s challenging to "
-#~ "learn how to code, but we want "
-#~ "you to\n"
-#~ "        know that you belong in tech development\n"
-#~ "        and in fact, you are sorely needed!"
+#~ msgid "Welcome to Coder's Boost!"
 #~ msgstr ""
-#~ "Un lugar al que puedes venir "
-#~ "cuando solo necesitas un pequeño "
-#~ "impulso.\n"
-#~ "  Sabemos que es un desafío aprender a codificar, \n"
-#~ "  pero queremos que sepas que perteneces al desarrollo tecnológico\n"
-#~ "  y, de hecho, ¡te necesitamos!"
 
 #~ msgid "Websites"
-#~ msgstr "Recursos del Sitio Web"
+#~ msgstr ""
 
 #~ msgid "Articles"
-#~ msgstr "Artículos"
+#~ msgstr ""
 

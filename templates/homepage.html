@@ -3,49 +3,46 @@
 {% block title %} Coder's Boost {% endblock %}
 
 {% block body %}
+      <h1>{{ _("Coder's Boost") }}</h1>
+      <p>{{ _('Intro') }}</p>
+      <!--Get encouragement button starts here -->
+      {% if encouragement %}
+      <p>{{encouragement.text}}</p>
+      <!-- Facebook (url) -->
+      <a
+        href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('homepage', encouragement_id=encouragement.id, _external=True) | urlencode }}">
+        Facebook
+      </a>
 
-<h1>{{ _("Welcome to Coder's Boost!") }}</h1>
-<p>{{ _('A place where you can come when you just need a little boost.
-  We know it’s challenging to learn how to code, but we want you to 
-  know that you belong in tech development
-  and in fact, you are sorely needed!') }}</p>
-  <!--Get encouragement button starts here -->
-{% if encouragement %}
-<p>{{encouragement.text}}</p>
-<!-- Facebook (url) -->
-<a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('homepage', encouragement_id=encouragement.id, _external=True) | urlencode }}">
-  Facebook
-</a>
+      <!-- Email (subject, body) -->
+      <a href="mailto:?subject=Coders%20Boost&body={{ encouragement.text | urlencode }}">
+        Email
+      </a>
 
-<!-- Email (subject, body) -->
-<a href="mailto:?subject=Coders%20Boost&body={{ encouragement.text | urlencode }}">
-  Email
-</a>
+      <!-- The text field -->
+      <input type="text" value="{{ url_for('homepage', encouragement_id=encouragement.id, _external=True) }}"
+        id="copyUrl">
 
-<!-- The text field -->
-<input type="text" value="{{ url_for('homepage', encouragement_id=encouragement.id, _external=True) }}" id="copyUrl">
+      <!-- The button used to copy the text -->
+      <button onclick="copyText()">{{ _('Copy link') }}</button>
 
-<!-- The button used to copy the text -->
-<button onclick="copyText()">{{ _('Copy link') }}</button>
+      {% endif %}
+      <form action="/" method="post">
+        <button type="submit" class="btn btn-success">{{ _('Get your daily boost') }}
+        </button>
+      </form>
 
-{% endif %}
-<form action="/" method="post">
-  <button type="submit" class="btn btn-success">{{ _('Get your daily boost') }}
-  </button>
-</form>
-
-<div style="text-align:left;">
-  {% if current_user.is_authenticated and encouragement %}
-    <!-- Favorite button starts here -->
-    <form action="/user-encouragement" method="post">
-      <input type="hidden" name="user_id" id="user_id" value={{current_user.id}}><br>
-      <input type="hidden" name="encouragement_id" id="encouragement_id" value={{encouragement.id}}><br><br>
-      <button type="submit" class="btn">
-        <i class="fa fa-heart" style="color: crimson;"></i>
-      </button>
-    </form>
-    <!-- Favorite button ends here -->
-  {% endif %}
-</div>
-
+      <div style="text-align:left;">
+        {% if current_user.is_authenticated and encouragement %}
+        <!-- Favorite button starts here -->
+        <form action="/user-encouragement" method="post">
+          <input type="hidden" name="user_id" id="user_id" value={{current_user.id}}><br>
+          <input type="hidden" name="encouragement_id" id="encouragement_id" value={{encouragement.id}}><br><br>
+          <button type="submit" class="btn">
+            <i class="fa fa-heart" style="color: crimson;"></i>
+          </button>
+        </form>
+        <!-- Favorite button ends here -->
+        {% endif %}
+      </div>
 {% endblock %}

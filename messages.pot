@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-09 15:58-0800\n"
+"POT-Creation-Date: 2022-11-14 16:39-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
+#: templates/homepage.html:6
+msgid "Coder's Boost"
+msgstr ""
+
 #: templates/homepage.html:7
-msgid "Welcome to Coder's Boost!"
+msgid "Intro"
 msgstr ""
 
-#: templates/homepage.html:8
-msgid ""
-"A place where you can come when you just need a little boost.\n"
-"  We know it’s challenging to learn how to code, but we want you to \n"
-"  know that you belong in tech development\n"
-"  and in fact, you are sorely needed!"
-msgstr ""
-
-#: templates/homepage.html:29
+#: templates/homepage.html:27
 msgid "Copy link"
 msgstr ""
 
-#: templates/homepage.html:33
+#: templates/homepage.html:31
 msgid "Get your daily boost"
 msgstr ""
 
@@ -82,10 +78,14 @@ msgid "Resources:"
 msgstr ""
 
 #: templates/resources.html:18
-msgid "Websites"
+msgid "Coding Communities"
 msgstr ""
 
-#: templates/resources.html:44
-msgid "Articles"
+#: templates/resources.html:37
+msgid "Inspiring Articles or Sites"
+msgstr ""
+
+#: templates/resources.html:58
+msgid "Related Research"
 msgstr ""
 
