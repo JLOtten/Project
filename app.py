@@ -6,12 +6,15 @@ from flask_babel import Babel
 from flask_dance.contrib.github import github
 from flask_login import current_user, login_required, logout_user
 from jinja2 import StrictUndefined
+import os
 from sqlalchemy.sql.expression import func
 
 from crud import (get_next_encouragement, save_encouragement_seen,
                   save_user_encouragement)
 from model import Encouragement, UserEncouragement, db, login_manager
 from oauth import github_blueprint
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -20,7 +23,10 @@ app.register_blueprint(github_blueprint, url_prefix="/login")
 babel = Babel(app)
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 
-app.config["SQLALCHEMY_DATABASE_URI"] ="postgresql:///coders_boost"
+db_uri = os.getenv("DATABASE_URL")
+if db_uri.startswith("postgres://"):
+    db_uri = db_uri.replace("postgres://","postgresql://", 1)
+app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
 app.config["SQLALCHEMY_ECHO"] = True
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 

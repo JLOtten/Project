@@ -1,0 +1,9 @@
+# flyctl launch added from .gitignore
+**/__pycache__
+**/env
+**/.env
+**/secrets.sh
+
+# flyctl launch added from env/.gitignore
+# created by virtualenv automatically
+env/**/*
