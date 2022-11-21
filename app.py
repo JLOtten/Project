@@ -50,9 +50,8 @@ def profile():
      #show favorited encouragements by user
         user_encouragements = UserEncouragement.query.filter(UserEncouragement.user_id==current_user.id, UserEncouragement.favorited_at != None).all()
     else:
-        #if not logged in flash message that user must be logged in 
-        flash("Please log in with github to view your profile page.")  #try to fis this flash message...it's not showing up. (look this up)
-        return redirect(url_for("homepage"))
+        #if not logged in redirect to homepage
+        redirect(url_for("homepage"))
     
     return render_template("profile.html", user_encouragements=user_encouragements)
 
