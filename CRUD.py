@@ -28,7 +28,10 @@ def get_next_encouragement(user, language):
     seen least recently."""
 
     #get all encouragements in a list: 
+    if language is None:
+        language = "en"
     encouragements = Encouragement.query.filter_by(language=language).all() #filter encouragements by langugage
+    print(len(encouragements))
      #loop thru encouragements to determine if it has not been seen, if that's true, return it
     for encouragement in encouragements:
 
@@ -41,10 +44,11 @@ def get_next_encouragement(user, language):
     #make a query for encouragement that was seen least recently
     #how do you order by in sqlalchemy?
     last_seen_user_enc=UserEncouragement.query.filter_by(user_id=user.id).order_by(UserEncouragement.last_viewed_at).first()
-
-    last_seen_enc=Encouragement.query.filter_by(id=last_seen_user_enc.encouragement_id).first()
-
-    return last_seen_enc
+    if last_seen_user_enc:
+        last_seen_enc=Encouragement.query.filter_by(id=last_seen_user_enc.encouragement_id).first()
+        return last_seen_enc
+    
+    return encouragements[0]
 
 def save_encouragement_seen(user, encouragement):
     """If a given user id has seen a given encouragement_id, then save it."""
@@ -77,5 +81,15 @@ def save_user_encouragement(user_id, encouragement_id):
         fav_encouragement = UserEncouragement(user_id=user_id, encouragement_id=encouragement_id, favorited_at=datetime.now())
         db.session.add(fav_encouragement)
         db.session.commit()
+
+def delete_user_favorite(user_id, encouragement_id):
+    """Removes a favorited user encouragement."""
+     #getting one user favorited encouragement, take in the logged in user (current_user_id) so some user can't delete another user's encouragement
+    user_encouragement = UserEncouragement.query.filter(UserEncouragement.user_id==user_id, UserEncouragement.encouragement_id==encouragement_id).one()
+    #reset favorited_at timestamp to None (to "delete") favorited encouragement
+    user_encouragement.favorited_at = None
+    db.session.add(user_encouragement)
+    db.session.commit()
+
 
     

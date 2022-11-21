@@ -1,5 +1,7 @@
 """Server for Coder's Boost app"""
 
+import click
+from flask.cli import with_appcontext
 from flask import (Flask, flash, redirect, render_template, request, session,
                    url_for)
 from flask_babel import Babel
@@ -10,11 +12,13 @@ import os
 from sqlalchemy.sql.expression import func
 
 from crud import (get_next_encouragement, save_encouragement_seen,
-                  save_user_encouragement)
-from model import Encouragement, UserEncouragement, db, login_manager
+                  save_user_encouragement, delete_user_favorite)
+from model import Encouragement, UserEncouragement, db, login_manager, User
 from oauth import github_blueprint
+from onesignal import send_email
 from dotenv import load_dotenv
 load_dotenv()
+os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -60,13 +64,9 @@ def delete_favorite():
     content = request.json
     #get a specific encouragement on a user's profile, using the user_id and the encouragement_id
     encouragement_id = int(content.get("encouragement_id"))
-    #getting one user favorited encouragement, take in the logged in user (current_user_id) so some user can't delete another user's encouragement
-    user_encouragement = UserEncouragement.query.filter(UserEncouragement.user_id==current_user.id, UserEncouragement.encouragement_id==encouragement_id).one()
-    #reset favorited_at timestamp to None (to "delete") favorited encouragement
-    user_encouragement.favorited_at = None
-    db.session.add(user_encouragement)
-    db.session.commit()
-
+    #call crud function that saves this change to the data base
+    delete_user_favorite(current_user.id, encouragement_id)
+ 
     return ""
 
 @app.route("/user-encouragement", methods=["POST"]) #hidden route that grabs what I need to save fav_encouragements to profile page
@@ -95,16 +95,17 @@ def logout():
 @app.route("/", methods=("GET", "POST"))
 def homepage():
     """View function for homepage."""
-    #grab a random encouragement, if they've hit the button
+    #grab an encouragement, if they've hit the button
     encouragement = None
     if request.method == "POST": #when form is submitted (button) to get a boost
-        if current_user.is_authenticated:
+        if current_user.is_authenticated: #is_authenticated is part of flask login (see flask docs)
             #if the user is logged in, save that they've seen the encouragement
             encouragement = get_next_encouragement(current_user, get_locale()) #get the language with get_locale()
             save_encouragement_seen(current_user, encouragement)
         else:
+             #get random encouragement filtered by language (with get_locale()) and return one random pick from db
             encouragement = Encouragement.query.filter_by(language=get_locale()).order_by(func.random()).first()
-        #get encouragement filtered by language (with get_locale()) and return one random pick from db
+       
         
     encouragement_id = request.args.get('encouragement_id') #get a specific encouragement from the query string parameter
                                       #convert to integer because it's returned as a string
@@ -143,6 +144,42 @@ def language(language):
         session['language'] = language
 
     return ""
+
+@app.route("/profile/email", methods=["POST"])
+def update_email():
+    
+    #data being sent from user's browser in json 
+    content = request.json
+    #get email from json body data
+    email = content.get("email")
+    #get user object from db
+    user = User.query.filter(User.id==current_user.id).one()
+    #change user's email to the one they just sent in json body, set to email variable
+    user.email = email
+    #store user in db
+    db.session.add(user)
+    db.session.commit()
+
+    return ""
+
+@click.command(name='send-daily-email') #creating a custom command in flask, see geeksforgeeks for syntax & instructions
+@with_appcontext
+def send_daily_email():
+    #get an encouragement:
+    #get random encouragement filtered by language (with get_locale()) and return one random pick from db
+    encouragement = Encouragement.query.filter_by(language="").order_by(func.random()).first()
+    #get all users with an email address
+    users = User.query.filter(User.email != None).all()
+    #iterate through all users
+    for user in users:
+    #send them a daily encouragement in an email, using function from onesignal.py
+        send_email(user.email, encouragement.text)
+
+    return ""
+
+app.cli.add_command(send_daily_email) #registering this command with flask app
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

@@ -19,4 +19,12 @@
   {% endfor %}
 </ul>
 
+<ul>
+  <li>
+  <!--checkbox that sends email with push notification in app.py-->
+  <button id="email" onClick="updateEmail()">{{ _('Enter email to get a daily boost') }}</button>
+  <!-- The text field -->
+  <input type="text" id="updateEmail">
+  </li>
+</ul>
 {% endblock %}

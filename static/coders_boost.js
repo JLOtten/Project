@@ -40,3 +40,19 @@ function copyText() {
       return false 
     })
   }
+    //make an event listener for add email for push notifications
+    function updateEmail() {
+      //getting value of text field entered for email
+      const email = document.getElementById('updateEmail').value
+      fetch(`${window.location.protocol}//${window.location.host}/profile/email`, { //this constructs the url
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', //tells server this is a json request
+        },
+        credentials: 'include',  //sends user credentials, so it knows which user is sending request
+        body: JSON.stringify({email: email}) //takes JS object and turns it into a string
+      })
+      .catch((error)=> {  // in the case there was some error
+        console.error('Error:', error); // log an error to the console
+      });
+    }
