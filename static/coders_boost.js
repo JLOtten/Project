@@ -1,15 +1,31 @@
 function copyText() {
-    // Get the text field
-    var copyText = document.getElementById("copyUrl");
-  
-    // Select the text field
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); // For mobile devices
-  
+    let element = document.getElementById("copyButton");
      // Copy the text inside the text field
-    navigator.clipboard.writeText(copyText.value);
+    navigator.clipboard.writeText(element.getAttribute("data-value"));
   
   }
+
+    //make an event listener for favorite button
+    function favoriteEncouragement() {
+      let element = document.getElementById("favoriteEncouragement");
+
+      const encouragement_id = element.getAttribute("data-value");
+
+      fetch(`${window.location.protocol}//${window.location.host}/save-favorite`, { //this constructs the url
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', //tells server this is a json request
+        },
+        credentials: 'include',  //sends user credentials, so it knows which user is sending request
+        body: JSON.stringify({encouragement_id: encouragement_id}) //takes JS object and turns it into a string
+      })
+      .then(function () {   //anonymous function, not doing anything with response (vs code suggested this)
+        console.log("success saving encouragement");
+      })
+      .catch((error)=> {  // in the case there was some error
+        console.error('Error:', error); // log an error to the console
+      });
+    }
 
   //make an event listener for delete button
   function deleteFavoriteEncouragement(encouragement_id) {

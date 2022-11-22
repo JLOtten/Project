@@ -68,15 +68,15 @@ def delete_favorite():
  
     return ""
 
-@app.route("/user-encouragement", methods=["POST"]) #hidden route that grabs what I need to save fav_encouragements to profile page
-def user_encouragement():
+@app.route("/save-favorite", methods=["POST"]) #hidden route that grabs what I need to save fav_encouragements to profile page
+def save_favorite():
     """Gets user_id and encouragement_id and saves it."""
 
-    user_id = int(request.form.get("user_id"))
-    encouragement_id = int(request.form.get("encouragement_id"))
-    save_user_encouragement(user_id, encouragement_id)
+    content = request.json
+    encouragement_id = int(content.get("encouragement_id"))
+    save_user_encouragement(current_user.id, encouragement_id)
 
-    return redirect(url_for("homepage"))
+    return ""
 
 @app.route("/github") #Github OAuth route
 def login():

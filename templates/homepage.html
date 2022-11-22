@@ -3,46 +3,74 @@
 {% block title %} Coder's Boost {% endblock %}
 
 {% block body %}
-      <h1>{{ _("Coder's Boost") }}</h1>
-      <p>{{ _('Intro') }}</p>
-      <!--Get encouragement button starts here -->
-      {% if encouragement %}
-      <p>{{encouragement.text}}</p>
-      <!-- Facebook (url) -->
-      <a
-        href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('homepage', encouragement_id=encouragement.id, _external=True) | urlencode }}">
-        Facebook
-      </a>
+<style>
+  .homepage-title {
+    height: 100px;
+  }
+  .sm-intro {
+    text-transform: uppercase;
+    font-weight: lighter;
+    font-size: smaller;
+  }
+  .lg-encouragement {
+    text-transform:none;
+    font-size: large;
+    font-weight:none;
+  }
+</style>
+<div class="row homepage-title align-items-end">
+  <div class="col">
+    <h1>{{ _("Coder's Boost") }}</h1>
+  </div>
+</div>
+<div class="row">
+    <div class="col sm-intro"><p>{{ _('Intro') }}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <!--Get encouragement button starts here -->
+    {% if encouragement %}
+    <div id="encouragement-text" class="lg-encouragement">{{encouragement.text}}</div>{% if current_user.is_authenticated and encouragement %}
+    <!-- Favorite button starts here -->
+    <button class="btn" id="favoriteEncouragement" , data-value="{{ encouragement.id }}" onclick="favoriteEncouragement()">
+      <i class="fa fa-heart" style="color: crimson;"></i>
+    </button>
+    <!-- Favorite button ends here -->
+    {% endif %}
+  </div>
+</div>
+<div class="row">
+  <div class="col">
 
-      <!-- Email (subject, body) -->
-      <a href="mailto:?subject=Coders%20Boost&body={{ encouragement.text | urlencode }}">
-        Email
-      </a>
+<!-- Facebook (url) -->
+<a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('homepage', encouragement_id=encouragement.id, _external=True) | urlencode }}">
+  <i class="fa-brands fa-facebook fa-xl"></i>
+</a>
+  </div>
+  <div class="col">
+<!-- Email (subject, body) -->
+<a href="mailto:?subject=Coders%20Boost&body={{ encouragement.text | urlencode }}"><i
+  class="fa-regular fa-envelope fa-xl"></i></a>
+  </div>
+  <div class="col">
 
-      <!-- The text field -->
-      <input type="text" value="{{ url_for('homepage', encouragement_id=encouragement.id, _external=True) }}"
-        id="copyUrl">
+<!-- The button used to copy the text -->
+<button class="btn btn-primary-outline" id="copyButton"
+  data-value="{{ url_for('homepage', encouragement_id=encouragement.id, _external=True) }}" onclick="copyText()">
+  <i class="fa-regular fa-copy fa-lg"></i>
+</button>
+  </div>
+</div>
 
-      <!-- The button used to copy the text -->
-      <button onclick="copyText()">{{ _('Copy link') }}</button>
 
-      {% endif %}
-      <form action="/" method="post">
-        <button type="submit" class="btn btn-success">{{ _('Get your daily boost') }}
-        </button>
-      </form>
 
-      <div style="text-align:left;">
-        {% if current_user.is_authenticated and encouragement %}
-        <!-- Favorite button starts here -->
-        <form action="/user-encouragement" method="post">
-          <input type="hidden" name="user_id" id="user_id" value={{current_user.id}}><br>
-          <input type="hidden" name="encouragement_id" id="encouragement_id" value={{encouragement.id}}><br><br>
-          <button type="submit" class="btn">
-            <i class="fa fa-heart" style="color: crimson;"></i>
-          </button>
-        </form>
-        <!-- Favorite button ends here -->
-        {% endif %}
-      </div>
+
+
+
+{% endif %}
+<form action="/" method="post">
+  <button type="submit" class="btn btn-success">{{ _('Get your daily boost') }}
+  </button>
+</form>
 {% endblock %}
