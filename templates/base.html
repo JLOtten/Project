@@ -16,95 +16,11 @@
   <script src="{{ url_for('static', filename='coders_boost.js') }}"></script>
   {% block head %}{% endblock %}
 </head>
-<style>
-  .site-base {
-    background-color: rgb(214, 151, 230);
-  }
-
-  body,
-  html {
-    margin: 0;
-    width: 100%;
-  }
-
-  html {
-    background-color: rgb(214, 151, 230)
-  }
-
-  .container {
-    padding: 1em;
-    max-width: 750px;
-    min-height: 100vh;
-    width: 90%;
-    margin: auto;
-    box-sizing: border-box;
-    background-color: rgb(214, 151, 230)
-  }
-
-  .row {
-    margin: 0;
-    padding-left: 20px;
-  }
-</style>
 <body>
-  
+
   {% include 'navbar.html' %}
-  <div class="container site-base">
-    <div class="row">
-      <div class="col">
-        {% block body %}{% endblock %}
-      </div>
-      <div class="col">
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/MomCoding.png') }}" class="d-block w-100" alt="">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/SunsetCoders.png') }}" class="d-block w-100" alt="">
-            </div>
-            <div class="carousel-item active">
-              <img src="{{ url_for('static', filename='images/WomanWheelchairCoding.png') }}" class="d-block w-100"
-                alt="">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/TeenagerProgramming.png') }}" class="d-block w-100"
-                alt="">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/GirlCoding.png') }}" class="d-block w-100" alt="">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/PairProgramming.png') }}" class="d-block w-100" alt="">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/VividPairProgramming.png') }}" class="d-block w-100"
-                alt="">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/cyberpunk.png') }}" class="d-block w-100" alt="">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/BoyCoding.png') }}" class="d-block w-100" alt="">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/BlindCoder.png') }}" class="d-block w-100" alt="">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  {% block body %}{% endblock %}
 
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"

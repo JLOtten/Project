@@ -7,70 +7,178 @@
   .homepage-title {
     height: 100px;
   }
+
   .sm-intro {
     text-transform: uppercase;
     font-weight: lighter;
     font-size: smaller;
   }
+
   .lg-encouragement {
-    text-transform:none;
+    text-transform: none;
     font-size: large;
-    font-weight:none;
+    font-weight: none;
   }
+  .carousel {
+    width: 800px;
+    height: 800px;
+  }
+  #encouragement-text {
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 900;
+  }
+
 </style>
-<div class="row homepage-title align-items-end">
-  <div class="col">
-    <h1>{{ _("Coder's Boost") }}</h1>
-  </div>
-</div>
-<div class="row">
-    <div class="col sm-intro"><p>{{ _('Intro') }}</p>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <!--Get encouragement button starts here -->
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col">
+      <div class="row">
+        <p>{{ _('Intro') }}</p>
+      </div>
+      <div class="row">
+      {% if encouragement %}
+        <h1 id="encouragement-text">{{encouragement.text}}</h1>
+      {% if current_user.is_authenticated and encouragement %}
+        <!-- Favorite button starts here -->
+        <button type="button" class="btn btn-primary-outline text-start" id="favoriteEncouragement" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to save to your page", data-value="{{ encouragement.id }}"
+          onclick="favoriteEncouragement()">
+          <i class="fa fa-heart fa-xl" style="color: crimson;"></i>
+        </button>
+        <!-- Favorite button ends here -->
+      {% endif %}
+      {% endif %}
+    </div>
     {% if encouragement %}
-    <div id="encouragement-text" class="lg-encouragement">{{encouragement.text}}</div>{% if current_user.is_authenticated and encouragement %}
-    <!-- Favorite button starts here -->
-    <button class="btn" id="favoriteEncouragement" , data-value="{{ encouragement.id }}" onclick="favoriteEncouragement()">
-      <i class="fa fa-heart" style="color: crimson;"></i>
-    </button>
-    <!-- Favorite button ends here -->
-    {% endif %}
+  <div class="row">
+    <div class="col">
+      <!-- Facebook (url) -->
+      <button class="btn btn-primary-outline">
+        <a
+          href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('homepage', encouragement_id=encouragement.id, _external=True) | urlencode }}">
+          <img src="{{ url_for('static', filename='share_icons/facebook-square-medium.png') }}" width="32" height="32"
+            alt="Facebook Icon Medium Square">
+        </a>
+      </button>
+
+      <!-- Email (subject, body) -->
+      <button class="btn btn-primary-outline">
+        <a href="mailto:?subject=Coders%20Boost&body={{ encouragement.text | urlencode }}"><img
+            src="{{ url_for('static', filename='share_icons/email-square-medium.png') }}" width="32" height="32"
+            alt="Email (Generic) Icon Medium Square"></a>
+      </button>
+
+      <!-- The button used to copy the text -->
+      <button class="btn btn-primary-outline" id="copyButton"
+        data-value="{{ url_for('homepage', encouragement_id=encouragement.id, _external=True) }}" onclick="copyText()">
+        <img src="{{ url_for('static', filename='share_icons/link-square-medium.png') }}" width="32" height="32"
+          alt="Link (Generic) Icon Medium Square">
+      </button>
+    </div>
   </div>
+  {% endif %}
+      <div class="row">
+        <!--Get encouragement button starts here -->
+        <form action="/" method="post">
+          <button type="submit" class="btn btn-success">{{ _('Get your daily boost') }}
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row"><img src="{{ url_for('static', filename='images/coder-illustration.png') }}"></div>
+    </div>
+  </div>
+  
+  <!--DALLE Image Carousel Starts Here-->
+  <div class="row">
+    <div class="col-md">
+      <div class="d-flex justify-content-center">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{ url_for('static', filename='images/MomCoding.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/SunsetCoders.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/WomanWheelchairCoding.png') }}" class="d-block w-100"
+                alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/TeenagerProgramming.png') }}" class="d-block w-100"
+                alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/GirlCoding.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/PairProgramming.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/VividPairProgramming.png') }}" class="d-block w-100"
+                alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/cyberpunk.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/BoyCoding.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/BlindCoder.png') }}" class="d-block w-100" alt="">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--DALLE Image Carousel ends here-->
+
+  <div class="row">
+    <div class="col">
+      <h2> You belong here!</h2>
+
+
+      <p>Learning to code is hard, especially if you run into a lot of negative reinforcement along the way.
+      People from underrepresented backgrounds will likely run into more negative reinforcement as they work to break
+      into
+      tech.
+      Current statistics in tech careers for women, people of color or LBGTQ communities show a stark dissonance
+      compared
+      to the demographics of the general population.
+
+      Computer Science students in universities across the United States do not represent the demographics of our
+      country.
+      There are many reasons for this underrepresentation of diversity in tech careers: from lack of early exposure,
+      repeated discouragement or lack of access to quality STEM education to name a few.
+    </p>
+
+      <h2>How can we help?</h2>
+
+      <p>Coder’s Boost is designed to reassure you that you belong in this field and give you positive reinforcement to encourage you on your journey. 
+      Motivation is highly tied to educational outcomes. Learning to code is a long and sometimes arduous process, especially if you are doing so remotely. 
+      Coder’s Boost is here to help emerging coders keep their motivation from waning–one boost at a time. Why? Because tech needs you. Your perspective is valuable. 
+      You can help so many people like you through your representation and hard work. You belong here.
+    </p>
+      
+      <h2>What next?</h2>
+      <p>
+      Log in with Github to save your favorite encouragements and to sign up for a daily email boost. 
+      </p>
+
+    </div>
+  </div>
+  <div class="row justify-content-center text-center"><div class="col">ILLUSTRATIONS BY <a href="https://icons8.com/illustrations">ICON8</a></div></div>
 </div>
-<div class="row">
-  <div class="col">
-
-<!-- Facebook (url) -->
-<a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('homepage', encouragement_id=encouragement.id, _external=True) | urlencode }}">
-  <i class="fa-brands fa-facebook fa-xl"></i>
-</a>
-  </div>
-  <div class="col">
-<!-- Email (subject, body) -->
-<a href="mailto:?subject=Coders%20Boost&body={{ encouragement.text | urlencode }}"><i
-  class="fa-regular fa-envelope fa-xl"></i></a>
-  </div>
-  <div class="col">
-
-<!-- The button used to copy the text -->
-<button class="btn btn-primary-outline" id="copyButton"
-  data-value="{{ url_for('homepage', encouragement_id=encouragement.id, _external=True) }}" onclick="copyText()">
-  <i class="fa-regular fa-copy fa-lg"></i>
-</button>
-  </div>
-</div>
-
-
-
-
-
-
-{% endif %}
-<form action="/" method="post">
-  <button type="submit" class="btn btn-success">{{ _('Get your daily boost') }}
-  </button>
-</form>
 {% endblock %}
