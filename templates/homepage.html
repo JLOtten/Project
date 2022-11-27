@@ -21,9 +21,10 @@
   }
 
   .carousel {
-    width: 600px;
-    height: 600px;
-    margin: 100px;
+    width: 60%;
+    height: 60%;
+    margin: 5%;
+    padding: 5%;
   }
 
   #encouragement-text {
@@ -57,7 +58,7 @@
 </style>
 <div class="container" id="top-homepage">
   <div class="row align-items-center">
-    <div class="col">
+    <div class="col-md">
       <div class="row">
         <div class="col">
           <h1 style='font-family: Inter, "Helvetica Neue", Arial, sans-serif; font-variant-caps: small-caps;'>👏 Coder’s
@@ -79,7 +80,7 @@
           <!--Get encouragement button starts here -->
           <form action="/" method="get">
             <input type="hidden" id="nextEncouragement" name="nextEncouragement" value="true" />
-            <button type="submit" class="btn btn-dark btn-lg">{{ _('Get your daily boost') }}
+            <button type="submit" class="btn btn-info btn-lg" style="background-color: rgba(13, 202, 240, 0.25);">{{ _('Get your daily boost') }}
             </button>
           </form>
         </div>
@@ -97,40 +98,25 @@
           <!-- Favorite button ends here -->
           {% endif %}
           <!-- Facebook (url) -->
-          <button class="btn btn-primary-outline"><i class="fa-brands fa-facebook-f fa-l" style="color: dimgray"></i>
-            <!-- <a
-            href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('homepage', encouragement_id=encouragement.id, _external=True) | urlencode }}">
-            <img src="{{ url_for('static', filename='share_icons/facebook-square-medium.png') }}" width="32" height="32"
-              alt="Facebook Icon Medium Square">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('homepage', encouragement_id=encouragement.id, _external=True) | urlencode }}"><button class="btn btn-primary-outline"><i class="fa-brands fa-facebook-f fa-l" style="color: dimgray"></i>
           </a>
-        -->
           </button>
 
           <!-- Email (subject, body) -->
-          <button class="btn btn-primary-outline"><i class="fa-regular fa-envelope fa-l" style="color:dimgray"></i>
-            <!--
-          <a href="mailto:?subject=Coders%20Boost&body={{ encouragement.text | urlencode }}"><img
-              src="{{ url_for('static', filename='share_icons/email-square-medium.png') }}" width="32" height="32"
-              alt="Email (Generic) Icon Medium Square"></a>
-              -->
-          </button>
+          <a href="mailto:?subject=Coders%20Boost&body={{ encouragement.text | urlencode }}"><button class="btn btn-primary-outline" role="button"><i class="fa-regular fa-envelope fa-l" style="color:dimgray"></i></a></button>
 
           <!-- The button used to copy the text -->
-          <button class="btn btn-primary-outline" id="copyButton"
+          <button class="btn btn-primary-outline" id="copyButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy link"
             data-value="{{ url_for('homepage', encouragement_id=encouragement.id, _external=True) }}"
             onclick="copyText()">
             <i class="fa-solid fa-link fa-l" style="color:dimgray"></i>
-            <!--
-          <img src="{{ url_for('static', filename='share_icons/link-square-medium.png') }}" width="32" height="32"
-            alt="Link (Generic) Icon Medium Square">
-            -->
           </button>
         </div>
       </div>
       {% endif %}
 
     </div>
-    <div class="col">
+    <div class="col-md">
       <div class="row"><img src="{{ url_for('static', filename='images/coder-illustration.png') }}"></div>
     </div>
   </div>
@@ -143,37 +129,37 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="{{ url_for('static', filename='images/MomCoding.png') }}" class="d-block w-100" alt="">
+              <img src="{{ url_for('static', filename='images/MomCoding.png') }}" class="d-block w-100" alt="Mom coding with her two sons.">
             </div>
             <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/SunsetCoders.png') }}" class="d-block w-100" alt="">
+              <img src="{{ url_for('static', filename='images/SunsetCoders.png') }}" class="d-block w-100" alt="Two women of color pair programming.">
             </div>
             <div class="carousel-item">
               <img src="{{ url_for('static', filename='images/WomanWheelchairCoding.png') }}" class="d-block w-100"
-                alt="">
+                alt="A woman in a wheelchair coding.">
             </div>
             <div class="carousel-item">
               <img src="{{ url_for('static', filename='images/TeenagerProgramming.png') }}" class="d-block w-100"
-                alt="">
+                alt="A teenage boy of color coding.">
             </div>
             <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/GirlCoding.png') }}" class="d-block w-100" alt="">
+              <img src="{{ url_for('static', filename='images/GirlCoding.png') }}" class="d-block w-100" alt="A young girl of Asian descent coding.">
             </div>
             <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/PairProgramming.png') }}" class="d-block w-100" alt="">
+              <img src="{{ url_for('static', filename='images/PairProgramming.png') }}" class="d-block w-100" alt="Two young students coding in the same room.">
             </div>
             <div class="carousel-item">
               <img src="{{ url_for('static', filename='images/VividPairProgramming.png') }}" class="d-block w-100"
-                alt="">
+                alt="Two young men pair programming at the same computer.">
             </div>
             <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/cyberpunk.png') }}" class="d-block w-100" alt="">
+              <img src="{{ url_for('static', filename='images/cyberpunk.png') }}" class="d-block w-100" alt="Two young women of color coding together in front of a sunset.">
             </div>
             <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/BoyCoding.png') }}" class="d-block w-100" alt="">
+              <img src="{{ url_for('static', filename='images/BoyCoding.png') }}" class="d-block w-100" alt="A young Hispanic boy coding with his Grandmother.">
             </div>
             <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/BlindCoder.png') }}" class="d-block w-100" alt="">
+              <img src="{{ url_for('static', filename='images/BlindCoder.png') }}" class="d-block w-100" alt="A young vision impaired boy coding with his seeing eye dog.">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -193,8 +179,9 @@
 </div>
 <!--DALLE Image Carousel ends here-->
 <div class="container" style="max-width: none; margin-left: 0; margin-right: 0;">
-  <div class="row px-5 mx-5 py-3" id="about-text">
-    <div class="col" style="margin-left: 4rem;margin-right: 4rem;">
+  <div class="row py-3" id="about-text">
+    <div class="col-md-2"></div>
+    <div class="col-md">
       <h2>{{ _('You belong here!') }}</h2>
       <br />
       <p>{{ _('Learning to code') }}
@@ -203,16 +190,20 @@
         {{ _('Computer Science students') }}
       </p>
       <br />
+    </div>
+    <div class="col-md-2"></div>
+    </div>
+    </div>
+    <div class="container bg-info" id="bottom-text-container" style="--bs-bg-opacity: .25;">
+      <div class="row py-3" id="bottom-gray-text">
+        <div class="col-md-2"></div>
+        <div class="col-md">
+        
       <h2>{{ _('Why Coders Boost?') }}</h2>
       <br />
       <p>{{ _('Coders Boost is designed') }}
       </p>
-    </div>
-  </div>
-</div>
-<div class="container bg-info" id="bottom-text-container" style="--bs-bg-opacity: .25;">
-  <div class="row px-5 mx-5 py-3" id="bottom-gray-text">
-    <div class="col" style="margin-left: 4rem;margin-right: 4rem;">
+
       <h2>{{ _('What next?') }}</h2>
       <br />
       <p>
@@ -220,6 +211,7 @@
       </p>
       <br />
     </div>
+    <div class="col-md-2"></div>
   </div>
 </div>
 <div class="row justify-content-center text-center">

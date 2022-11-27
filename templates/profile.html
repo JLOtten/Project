@@ -5,83 +5,100 @@
 {% block body %}
 <div class="container">
   <div class="row">
-  <div class="col-7">
-    <div class="row">
-      {% if current_user.is_authenticated %}
-      <h1>😄{{ _('Welcome back') }} {{current_user.username}}!</h1>
-      <h3>{{_('Please take some time and enjoy your favorite encouragements.') }}👏</h3>
-      {% endif %}
-      <ul>
-        {% for user_encouragement in user_encouragements %}
-        <div id="encouragement-{{ user_encouragement.encouragement_id }}">
-          <li>
-            {{ user_encouragement.encouragement.text }}
-            <!--add a delete button that connects to delete view function in app.py-->
-            <button id="{{ user_encouragement.encouragement_id }}" type="button" class="btn btn-primary-outline"
-              onClick="deleteFavoriteEncouragement(this.id)"><i class="fa-regular fa-trash-can"></i></button>
-          </li>
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          {% if current_user.is_authenticated %}
+          <h1>😄 {{ _('Welcome back') }} {{current_user.username}}!</h1>
+          <h3>{{_('Please take some time and enjoy your favorite encouragements.') }}</h3>
+          {% endif %}
+          <ul>
+            {% for user_encouragement in user_encouragements %}
+            <div id="encouragement-{{ user_encouragement.encouragement_id }}">
+              <div class="row">
+                <div class="col-9">
+                  <li style="list-style-type:'👏 ';">
+                    {{ user_encouragement.encouragement.text }}
+                </div>
+                <div class="col-3">
+                  <!--add a delete button that connects to delete view function in app.py-->
+                  <button id="{{ user_encouragement.encouragement_id }}" type="button" class="btn btn-primary-outline"
+                    onClick="deleteFavoriteEncouragement(this.id)" data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Click to remove from favorites">
+                    <i class="fa-solid fa-trash" style="color:dimgray"></i>
+                  </button>
+                </div>
+                </li>
+              </div>
+            </div>
+            {% endfor %}
+          </ul>
         </div>
-        {% endfor %}
-      </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+          <form class="form">
+            <div class="form-group col-md-6 mb-2">
+              <input type="email" class="form-control" id="updateEmail" placeholder="Enter email">
+            </div>
+            <button type="submit" class="btn btn-info col-md-6 mb-2" style="background-color: rgba(13, 202, 240, 0.25);"
+              id="email" onClick="updateEmail()">{{ _('Subscribe to get a daily boost') }}</button>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <form class="form">
-        <div class="form-group col-md-6 mb-2">
-          <input type="email" class="form-control" id="updateEmail" placeholder="Enter email">
+    <div class="col-md-5">
+      <div class="d-flex justify-content-center">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{ url_for('static', filename='images/MomCoding.png') }}" class="d-block w-100" alt="Mom coding with her two sons.">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/SunsetCoders.png') }}" class="d-block w-100" alt="Two women of color pair programming.">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/WomanWheelchairCoding.png') }}" class="d-block w-100"
+                alt="A woman in a wheelchair coding.">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/TeenagerProgramming.png') }}" class="d-block w-100"
+                alt="A teenage boy of color coding.">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/GirlCoding.png') }}" class="d-block w-100" alt="A young girl of Asian descent coding.">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/PairProgramming.png') }}" class="d-block w-100" alt="Two young students coding in the same room.">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/VividPairProgramming.png') }}" class="d-block w-100"
+                alt="Two young men pair programming at the same computer.">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/cyberpunk.png') }}" class="d-block w-100" alt="Two young women of color coding together in front of a sunset.">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/BoyCoding.png') }}" class="d-block w-100" alt="A young Hispanic boy coding with his Grandmother.">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/BlindCoder.png') }}" class="d-block w-100" alt="A young vision impaired boy coding with his seeing eye dog.">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-        <button type="submit" class="btn btn-primary col-md-6 mb-2" id="email" onClick="updateEmail()">{{ _('Subscribe to get a daily boost') }}</button>
-      </form>
-    </div>
-  </div>
-  <div class="col-5">
-    <div class="d-flex justify-content-center">
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="{{ url_for('static', filename='images/MomCoding.png') }}" class="d-block w-100" alt="">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ url_for('static', filename='images/SunsetCoders.png') }}" class="d-block w-100" alt="">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ url_for('static', filename='images/WomanWheelchairCoding.png') }}" class="d-block w-100"
-              alt="">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ url_for('static', filename='images/TeenagerProgramming.png') }}" class="d-block w-100" alt="">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ url_for('static', filename='images/GirlCoding.png') }}" class="d-block w-100" alt="">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ url_for('static', filename='images/PairProgramming.png') }}" class="d-block w-100" alt="">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ url_for('static', filename='images/VividPairProgramming.png') }}" class="d-block w-100" alt="">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ url_for('static', filename='images/cyberpunk.png') }}" class="d-block w-100" alt="">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ url_for('static', filename='images/BoyCoding.png') }}" class="d-block w-100" alt="">
-          </div>
-          <div class="carousel-item">
-            <img src="{{ url_for('static', filename='images/BlindCoder.png') }}" class="d-block w-100" alt="">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
     </div>
   </div>
-  </div>
-</div>
-{% endblock %}
+  {% endblock %}
