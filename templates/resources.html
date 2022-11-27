@@ -3,89 +3,150 @@
 {% block title %} Coder's Boost {% endblock %}
 
 {% block body %}
-<html>
-<head>
 <style>
-h1 {text-align: center;}
-p {text-align: center;}
-div {text-align: center;}
 </style>
-</head>
-<body>
+<div class="container">
+  <div class="row">
+    <div class="col-7">
+      <h1>ℹ️ {{ _('Resources:') }}</h1>
 
-<h1>{{ _('Resources:') }}</h1>
-  
-<h2>{{ _('Coding Communities') }}</h2> 
+      <h2>👩🏽‍💻 {{ _('Coding Communities') }}</h2>
 
-<div style="text-align:center;">
-  <a href="https://www.mothercoders.org/">Mother Coders</a>
+      <div>
+        <a href="https://www.mothercoders.org/">Mother Coders</a>
+      </div>
+
+      <div>
+        <a href="https://skillcrush.com/">Skillcrush Coding School</a>
+      </div>
+
+      <div>
+        <a href=" https://girlswhocode.com/">Girls Who Code</a>
+      </div>
+
+      <div>
+        <a
+          href="https://www.hiddengeniusproject.org/?gclid=Cj0KCQjwqoibBhDUARIsAH2OpWjAr3EUlNeAm1YKj4ZnpqdhM1ibcElsnYPMG700mKha0vOkhXXJXkYaAp-0EALw_wcB">The
+          Hidden Genius Project</a>
+      </div>
+
+      <div>
+        <a href="https://code.org/">Code.org</a>
+      </div>
+
+      <div>
+        <a href="https://www.latinxcoders.com/">Latinx Coders</a>
+      </div>
+
+
+      <h2>📖 {{ _('Inspiring Articles or Sites') }}</h2>
+      <div>
+        <a href="https://www.mckinsey.com/featured-insights/diversity-and-inclusion/women-in-the-workplace/">Women In
+          the Workplace 2022</a>
+      </div>
+
+      <div>
+        <a href="https://www.cio.com/article/193688/professional-organizations-focused-on-diversity-in-tech.html">20
+          Professional Organizations Focused on Diversity in Tech</a>
+      </div>
+
+      <div>
+        <a
+          href="https://medium.com/the-mission/apps-that-fight-online-abuse-tech-and-the-positivity-movement-7a8dce4dfbce">Apps
+          That Fight Online Abuse: Tech and the Positivity Movement</a>
+      </div>
+
+      <div>
+        <a href="https://tellmesomethingnice.com/">Tell me something nice</a>
+      </div>
+
+      <div>
+        <a
+          href="https://www.forbes.com/sites/nicholaswyman/2021/02/25/an-untapped-talent-resource-people-with-disabilities/?sh=176dd14a2fc0/">An
+          Untapped Talent Resource: People With Disabilities</a>
+      </div>
+
+
+
+      <h2>🔬 {{ _('Related Research') }}</h2>
+
+      <div>
+        <a
+          href="https://www.zippia.com/advice/diversity-in-high-tech-statistics/#:~:text=Underrepresented%20minorities%20in%20tech%20include,Black%20employees%20make%20up%207%25.">25+
+          Telling Diversity In High Tech Statistics [2022]</a>
+      </div>
+
+      <div>
+        <a href="https://files.eric.ed.gov/fulltext/EJ1081372.pdf">How Motivation Influences Student Engagement</a>
+      </div>
+
+      <div>
+        <a href="https://www.statista.com/statistics/1126823/worldwide-developer-gender/">Software developer gender
+          distribution worldwide as of 2022</a>
+      </div>
+
+      <div>
+        <a href="https://insights.dice.com/2020/07/08/how-many-software-developers-identify-lgbtq/">How Many Software
+          Developers Identify as LGBTQ+?</a>
+      </div>
+
+      <div>
+        <a
+          href="https://www.pewresearch.org/science/2021/04/01/stem-jobs-see-uneven-progress-in-increasing-gender-racial-and-ethnic-diversity/">STEM
+          Jobs See Uneven Progress in Increasing Gender, Racial and Ethnic Diversity</a>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="d-flex justify-content-center">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{ url_for('static', filename='images/MomCoding.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/SunsetCoders.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/WomanWheelchairCoding.png') }}" class="d-block w-100"
+                alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/TeenagerProgramming.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/GirlCoding.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/PairProgramming.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/VividPairProgramming.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/cyberpunk.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/BoyCoding.png') }}" class="d-block w-100" alt="">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='images/BlindCoder.png') }}" class="d-block w-100" alt="">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
-
-<div style="text-align:center;">
-  <a href="https://skillcrush.com/">Skillcrush Coding School</a>
-</div>
-
-<div style="text-align:center;">
-  <a href=" https://girlswhocode.com/">Girls Who Code</a>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://www.hiddengeniusproject.org/?gclid=Cj0KCQjwqoibBhDUARIsAH2OpWjAr3EUlNeAm1YKj4ZnpqdhM1ibcElsnYPMG700mKha0vOkhXXJXkYaAp-0EALw_wcB">The Hidden Genius Project</a>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://code.org/">Code.org</a>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://www.latinxcoders.com/">Latinx Coders</a>
-</div>
-
-
-<h3>{{ _('Inspiring Articles or Sites') }}</h3>
-<div style="text-align:center;">
-  <a href="https://www.mckinsey.com/featured-insights/diversity-and-inclusion/women-in-the-workplace/">Women In the Workplace 2022</a>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://www.cio.com/article/193688/professional-organizations-focused-on-diversity-in-tech.html">20 Professional Organizations Focused on Diversity in Tech</a>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://medium.com/the-mission/apps-that-fight-online-abuse-tech-and-the-positivity-movement-7a8dce4dfbce">Apps That Fight Online Abuse: Tech and the Positivity Movement</a>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://tellmesomethingnice.com/">Tell me something nice</a>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://www.forbes.com/sites/nicholaswyman/2021/02/25/an-untapped-talent-resource-people-with-disabilities/?sh=176dd14a2fc0/">An Untapped Talent Resource: People With Disabilities</a>
-</div>
-
-
-
-<h3>{{ _('Related Research') }}</h3>
-
-<div style="text-align:center;">
-  <a href="https://www.zippia.com/advice/diversity-in-high-tech-statistics/#:~:text=Underrepresented%20minorities%20in%20tech%20include,Black%20employees%20make%20up%207%25.">25+ Telling Diversity In High Tech Statistics [2022]</a>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://files.eric.ed.gov/fulltext/EJ1081372.pdf">How Motivation Influences Student Engagement</a>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://www.statista.com/statistics/1126823/worldwide-developer-gender/">Software developer gender distribution worldwide as of 2022</a>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://insights.dice.com/2020/07/08/how-many-software-developers-identify-lgbtq/">How Many Software Developers Identify as LGBTQ+?</a>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://www.pewresearch.org/science/2021/04/01/stem-jobs-see-uneven-progress-in-increasing-gender-racial-and-ethnic-diversity/">STEM Jobs See Uneven Progress in Increasing Gender, Racial and Ethnic Diversity</a>
-</div>
-
-
 {% endblock %}

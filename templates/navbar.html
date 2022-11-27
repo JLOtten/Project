@@ -1,46 +1,54 @@
-<nav class="navbar navbar-expand-lg navbar-lt bg-lt">
+<style>
+
+/* Hover dropdown */
+.hover_drop_down.input-group-btn ul.dropdown-menu{margin-top: 0px;}/*To avoid unwanted close*/
+.hover_drop_down.btn-group ul.dropdown-menu{margin-top:2px;}/*To avoid unwanted close*/
+.hover_drop_down:hover ul.dropdown-menu{
+   display: block;
+}
+
+</style>
+<nav class="navbar navbar-expand-xl navbar-lt py-3">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="{{ url_for('static', filename='favicon.ico') }}" alt="" width="30" height="24" class="d-inline-block align-text-top">
-    Coder's Boost </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ url_for('homepage') }}">{{ _('Home') }}</a>
+          <a class="nav-link {{ 'active' if 'profile' not in request.path and 'resources' not in request.path }}" aria-current="page" href="{{ url_for('homepage') }}">{{ _('Home') }}</a>
         </li>
         {% if current_user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('profile') }}">{{ _('My Page') }}</a>
+          <a class="nav-link {{ 'active' if 'profile' in request.path}}" href="{{ url_for('profile') }}">{{ _('My Page') }}</a>
         </li>
         {% endif %}
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('resources') }}">{{ _('Resources') }}</a>
+          <a class="nav-link {{ 'active' if 'resources' in request.path}}" href="{{ url_for('resources') }}">{{ _('Resources') }}</a>
         </li>
-        <li class="nav-item">
-          {% if current_user.is_authenticated %}
-          <a href="{{url_for('logout')}}" class="btn btn-danger">{{ _('Logout') }}</a>
-          {% else %}
-          <!-- GitHub button starts here -->
-          <a href="{{url_for('login')}}"  class="btn btn-secondary">
-            <i class="fa fa-github fa-fw"></i>
-            <span>{{ _('Login with GitHub') }}</span>
-          </a>
-          <!-- GitHub button ends here -->
-        {% endif %}
+        <li>
+          <div class="btn-group hover_drop_down" id="language-picker">
+            <a class="btn btn-primary-outline dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="true">
+              {{ _('Language') }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="language-dropdown">
+              <li><a class="dropdown-item" id="en" href="{{ url_for('homepage') }}" onClick="selectLanguage(this.id)">{{ _('English') }}</a></li>
+              <li><a class="dropdown-item" id="es" href="{{ url_for('homepage') }}" onClick="selectLanguage(this.id)">{{ _('Spanish') }}</a></li>
+            </ul>
+          </div>
         </li>
+      
       </ul>
     </div>
-    <div class="dropdown" id="language-picker">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-        {{ _('Language') }}
+      {% if current_user.is_authenticated %}
+      <a href="{{url_for('logout')}}" class="btn btn-danger">{{ _('Logout') }}</a>
+      {% else %}
+      <!-- GitHub button starts here -->
+      <a href="{{url_for('login')}}"  class="btn btn-secondary">
+        <i class="fa fa-github fa-fw"></i>
+        <span>{{ _('Login with GitHub') }}</span>
       </a>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="language-dropdown">
-        <li><a class="dropdown-item" id="en" href="{{ url_for('homepage') }}" onClick="selectLanguage(this.id)">{{ _('English') }}</a></li>
-        <li><a class="dropdown-item" id="es" href="{{ url_for('homepage') }}" onClick="selectLanguage(this.id)">{{ _('Spanish') }}</a></li>
-      </ul>
-    </div>
+      <!-- GitHub button ends here -->
+    {% endif %}
   </div>
 </nav>

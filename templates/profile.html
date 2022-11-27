@@ -3,28 +3,85 @@
 {% block title %} Coder's Boost {% endblock %}
 
 {% block body %}
-
-{% if current_user.is_authenticated %}
-<h1>{{ _('Welcome back') }} {{current_user.username}}!😄</h1>
-{% endif %}
-<ul>
-  {% for user_encouragement in user_encouragements %}
-  <div id="encouragement-{{ user_encouragement.encouragement_id }}">
-  <li>
-      {{ user_encouragement.encouragement.text }}
-  <!--add a delete button that connects to delete view function in app.py-->
-  <button id="{{ user_encouragement.encouragement_id }}" onClick="deleteFavoriteEncouragement(this.id)">{{ _('Delete') }}</button>
-  </li>
+<div class="container">
+  <div class="row">
+  <div class="col-7">
+    <div class="row">
+      {% if current_user.is_authenticated %}
+      <h1>😄{{ _('Welcome back') }} {{current_user.username}}!</h1>
+      <h3>{{_('Please take some time and enjoy your favorite encouragements.') }}👏</h3>
+      {% endif %}
+      <ul>
+        {% for user_encouragement in user_encouragements %}
+        <div id="encouragement-{{ user_encouragement.encouragement_id }}">
+          <li>
+            {{ user_encouragement.encouragement.text }}
+            <!--add a delete button that connects to delete view function in app.py-->
+            <button id="{{ user_encouragement.encouragement_id }}" type="button" class="btn btn-primary-outline"
+              onClick="deleteFavoriteEncouragement(this.id)"><i class="fa-regular fa-trash-can"></i></button>
+          </li>
+        </div>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="row">
+      <form class="form">
+        <div class="form-group col-md-6 mb-2">
+          <input type="email" class="form-control" id="updateEmail" placeholder="Enter email">
+        </div>
+        <button type="submit" class="btn btn-primary col-md-6 mb-2" id="email" onClick="updateEmail()">{{ _('Subscribe to get a daily boost') }}</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-5">
+    <div class="d-flex justify-content-center">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{{ url_for('static', filename='images/MomCoding.png') }}" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/SunsetCoders.png') }}" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/WomanWheelchairCoding.png') }}" class="d-block w-100"
+              alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/TeenagerProgramming.png') }}" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/GirlCoding.png') }}" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/PairProgramming.png') }}" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/VividPairProgramming.png') }}" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/cyberpunk.png') }}" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/BoyCoding.png') }}" class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/BlindCoder.png') }}" class="d-block w-100" alt="">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  </div>
 </div>
-  {% endfor %}
-</ul>
-
-<ul>
-  <li>
-  <!--checkbox that sends email with push notification in app.py-->
-  <button id="email" onClick="updateEmail()">{{ _('Enter email to get a daily boost') }}</button>
-  <!-- The text field -->
-  <input type="text" id="updateEmail">
-  </li>
-</ul>
 {% endblock %}

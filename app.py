@@ -96,7 +96,7 @@ def homepage():
     """View function for homepage."""
     #grab an encouragement, if they've hit the button
     encouragement = None
-    if request.method == "POST": #when form is submitted (button) to get a boost
+    if request.args.get("nextEncouragement"): #when form is submitted (button) to get a boost
         if current_user.is_authenticated: #is_authenticated is part of flask login (see flask docs)
             #if the user is logged in, save that they've seen the encouragement
             encouragement = get_next_encouragement(current_user, get_locale()) #get the language with get_locale()

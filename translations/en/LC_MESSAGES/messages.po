@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-14 16:39-0800\n"
+"POT-Creation-Date: 2022-11-26 16:51-0800\n"
 "PO-Revision-Date: 2022-11-14 14:46-0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,75 +18,99 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: templates/homepage.html:6
-msgid "Coder's Boost"
-msgstr ""
-
-#: templates/homepage.html:7
+#: templates/homepage.html:69
 msgid "Intro"
 msgstr "A place where coders can come when you just need a little boost."
 
-#: templates/homepage.html:27
-msgid "Copy link"
-msgstr ""
-
-#: templates/homepage.html:31
+#: templates/homepage.html:82
 msgid "Get your daily boost"
 msgstr ""
 
-#: templates/navbar.html:12
+#: templates/homepage.html:198
+msgid "You belong here!"
+msgstr ""
+
+#: templates/homepage.html:200
+msgid "Learning to code"
+msgstr "Learning to code is hard, especially if you run into a lot of negative reinforcement along the way. People from underrepresented backgrounds will likely run into more negative reinforcement as they work to break into tech. Current statistics in tech careers for women, people of color or LBGTQ communities show a stark dissonance compared to the demographics of the general population."
+
+#: templates/homepage.html:203
+msgid "Computer Science students"
+msgstr "Computer Science students in universities across the United States do not represent the demographics of our country. There are many reasons for this underrepresentation of diversity in tech careers: from lack of early exposure, repeated discouragement or lack of access to quality STEM education to name a few."
+
+#: templates/homepage.html:206
+msgid "Why Coders Boost?"
+msgstr "Why Coder’s Boost?"
+
+#: templates/homepage.html:208
+msgid "Coders Boost is designed"
+msgstr "Coder’s Boost is designed to reassure you that you belong in this field and give you positive reinforcement to encourage you on your journey. Motivation is highly tied to educational outcomes. Learning to code is a long and sometimes arduous process, especially if you are doing so remotely. Coder’s Boost is here to help emerging coders keep their motivation from waning–one boost at a time. Why? Because tech needs you. Your perspective is valuable. You can help so many people like you through your representation and hard work. You belong here."
+
+#: templates/homepage.html:216
+msgid "What next?"
+msgstr ""
+
+#: templates/homepage.html:219
+msgid "What next text"
+msgstr "Log in with Github to save your favorite encouragements and to sign up for a daily email boost."
+
+#: templates/navbar.html:19
 msgid "Home"
 msgstr ""
 
-#: templates/navbar.html:15
+#: templates/navbar.html:23
 msgid "My Page"
 msgstr ""
 
-#: templates/navbar.html:18
+#: templates/navbar.html:27
 msgid "Resources"
 msgstr ""
 
-#: templates/navbar.html:22
-msgid "Logout"
-msgstr ""
-
-#: templates/navbar.html:27
-msgid "Login with GitHub"
-msgstr ""
-
-#: templates/navbar.html:36
+#: templates/navbar.html:32
 msgid "Language"
 msgstr ""
 
-#: templates/navbar.html:39
+#: templates/navbar.html:35
 msgid "English"
 msgstr ""
 
-#: templates/navbar.html:40
+#: templates/navbar.html:36
 msgid "Spanish"
 msgstr ""
 
-#: templates/profile.html:8
+#: templates/navbar.html:44
+msgid "Logout"
+msgstr ""
+
+#: templates/navbar.html:49
+msgid "Login with GitHub"
+msgstr ""
+
+#: templates/profile.html:11
 msgid "Welcome back"
 msgstr ""
 
-#: templates/profile.html:16
-msgid "Delete"
+#: templates/profile.html:12
+msgid "Please take some time and enjoy your favorite encouragements."
 msgstr ""
 
-#: templates/resources.html:16
+#: templates/profile.html:32
+msgid "Subscribe to get a daily boost"
+msgstr ""
+
+#: templates/resources.html:11
 msgid "Resources:"
 msgstr ""
 
-#: templates/resources.html:18
+#: templates/resources.html:13
 msgid "Coding Communities"
 msgstr ""
 
-#: templates/resources.html:37
+#: templates/resources.html:42
 msgid "Inspiring Articles or Sites"
 msgstr ""
 
-#: templates/resources.html:58
+#: templates/resources.html:71
 msgid "Related Research"
 msgstr ""
 
@@ -97,5 +121,14 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Articles"
+#~ msgstr ""
+
+#~ msgid "Coder's Boost"
+#~ msgstr ""
+
+#~ msgid "Copy link"
+#~ msgstr ""
+
+#~ msgid "Delete"
 #~ msgstr ""
 

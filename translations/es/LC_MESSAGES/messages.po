@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-14 16:39-0800\n"
+"POT-Creation-Date: 2022-11-26 16:51-0800\n"
 "PO-Revision-Date: 2022-11-07 21:32-0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -18,78 +18,102 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: templates/homepage.html:6
-#, fuzzy
-msgid "Coder's Boost"
-msgstr "¡Bienvenidos a Coder's Boost!"
-
-#: templates/homepage.html:7
+#: templates/homepage.html:69
 msgid "Intro"
 msgstr ""
-"Un lugar donde los codificadores pueden venir cuando solo necesitas un pequeño impulso.."
+"Un lugar donde los codificadores pueden venir cuando solo necesitas un "
+"pequeño impulso.."
 
-
-#: templates/homepage.html:27
-msgid "Copy link"
-msgstr "Copiar link"
-
-#: templates/homepage.html:31
+#: templates/homepage.html:82
 msgid "Get your daily boost"
 msgstr "Obtén tu impulso diario"
 
-#: templates/navbar.html:12
+#: templates/homepage.html:198
+msgid "You belong here!"
+msgstr "¡Tu perteneces aquí!"
+
+#: templates/homepage.html:200
+msgid "Learning to code"
+msgstr "Aprender a codificar es difícil, especialmente si te encuentras con muchos refuerzos negativos en el camino.  Es probable que las personas de grupos subrepresentados se encuentren con un refuerzo más negativo a medida que trabajan para obtener un trabajo a la tecnología. Las estadísticas actuales en carreras tecnológicas para mujeres, personas de color o comunidades LBGTQ muestran una marcada disonancia en comparación con la demografía de la población general."
+
+#: templates/homepage.html:203
+msgid "Computer Science students"
+msgstr "Los estudiantes de Ciencias de la Computación en las universidades de los Estados Unidos no representan la demografía de nuestro país. Hay muchas razones para esta subrepresentación de la diversidad en las carreras tecnológicas: desde la falta de exposición temprana, el desánimo repetido o la falta de acceso a una educación STEM de calidad, por nombrar algunas."
+
+#: templates/homepage.html:206
+msgid "Why Coders Boost?"
+msgstr "¿Por qué Coder's Boost?"
+
+#: templates/homepage.html:208
+msgid "Coders Boost is designed"
+msgstr "Coder's Boost está diseñado para asegurarle que pertenece a este profesión y proporcionar un refuerzo positivo para alentarte en su viaje. La motivación está muy conectada a los resultados educativos. Aprender a codificar es un proceso largo y, a veces, arduo, especialmente si lo hace de forma remota.  Coder's Boost está aquí para ayudar a los programadores emergentes a evitar que su motivación disminuya, un impulso a la vez.  ¿Por qué? Porque la tecnología te necesita. Tu perspectiva es valiosa.  Puedes ayudar a muchas personas como usted gracias a su representación y trabajo duro. Tu perteneces aquí."
+
+#: templates/homepage.html:216
+msgid "What next?"
+msgstr "¿Qué sigue?"
+
+#: templates/homepage.html:219
+msgid "What next text"
+msgstr "Iniciar sesión con Github para salvar sus impulsos favoritos y registrarse para recibir un impulso diario por correo electrónico."
+
+#: templates/navbar.html:19
 msgid "Home"
-msgstr "Hogar"
+msgstr "Página Principal"
 
-#: templates/navbar.html:15
+#: templates/navbar.html:23
 msgid "My Page"
-msgstr "Mi página"
+msgstr "Mi Página"
 
-#: templates/navbar.html:18
+#: templates/navbar.html:27
 msgid "Resources"
 msgstr "Recursos"
 
-#: templates/navbar.html:22
-msgid "Logout"
-msgstr "Cerrar sesión"
-
-#: templates/navbar.html:27
-msgid "Login with GitHub"
-msgstr "Iniciar sesión con Github"
-
-#: templates/navbar.html:36
+#: templates/navbar.html:32
 msgid "Language"
 msgstr "Idioma"
 
-#: templates/navbar.html:39
+#: templates/navbar.html:35
 msgid "English"
 msgstr "Inglés"
 
-#: templates/navbar.html:40
+#: templates/navbar.html:36
 msgid "Spanish"
 msgstr "Español"
 
-#: templates/profile.html:8
+#: templates/navbar.html:44
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: templates/navbar.html:49
+msgid "Login with GitHub"
+msgstr "Iniciar sesión con Github"
+
+#: templates/profile.html:11
 msgid "Welcome back"
 msgstr "¡Bienvenido de nuevo "
 
-#: templates/profile.html:16
-msgid "Delete"
-msgstr "Eliminar"
+#: templates/profile.html:12
+msgid "Please take some time and enjoy your favorite encouragements."
+msgstr "Por favor, tómese un tiempo y disfrute de sus cumplidos favoritos."
 
-#: templates/resources.html:16
+#: templates/profile.html:32
+#, fuzzy
+msgid "Subscribe to get a daily boost"
+msgstr "Suscríbete para recibir un impulso diario"
+
+#: templates/resources.html:11
 msgid "Resources:"
-msgstr "Recursos"
+msgstr "Recursos:"
 
-#: templates/resources.html:18
+#: templates/resources.html:13
 msgid "Coding Communities"
 msgstr "Comunidades de Codificación"
 
-#: templates/resources.html:37
+#: templates/resources.html:42
 msgid "Inspiring Articles or Sites"
 msgstr "Artículos o Sitios Inspiradores"
 
-#: templates/resources.html:58
+#: templates/resources.html:71
 msgid "Related Research"
 msgstr "Investigación Relacionada"
 
@@ -113,4 +137,10 @@ msgstr "Investigación Relacionada"
 
 #~ msgid "Articles"
 #~ msgstr "Artículos"
+
+#~ msgid "Copy link"
+#~ msgstr "Copiar link"
+
+#~ msgid "Delete"
+#~ msgstr "Eliminar"
 
