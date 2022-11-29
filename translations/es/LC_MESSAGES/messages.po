@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-26 16:51-0800\n"
+"POT-Creation-Date: 2022-11-29 11:06-0800\n"
 "PO-Revision-Date: 2022-11-07 21:32-0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -18,43 +18,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: templates/homepage.html:69
+#: templates/homepage.html:70
 msgid "Intro"
 msgstr ""
 "Un lugar donde los codificadores pueden venir cuando solo necesitas un "
-"pequeño impulso.."
+"pequeño impulso."
 
-#: templates/homepage.html:82
+#: templates/homepage.html:83
 msgid "Get your daily boost"
 msgstr "Obtén tu impulso diario"
 
-#: templates/homepage.html:198
+#: templates/homepage.html:185
 msgid "You belong here!"
 msgstr "¡Tu perteneces aquí!"
 
-#: templates/homepage.html:200
+#: templates/homepage.html:187
 msgid "Learning to code"
-msgstr "Aprender a codificar es difícil, especialmente si te encuentras con muchos refuerzos negativos en el camino.  Es probable que las personas de grupos subrepresentados se encuentren con un refuerzo más negativo a medida que trabajan para obtener un trabajo a la tecnología. Las estadísticas actuales en carreras tecnológicas para mujeres, personas de color o comunidades LBGTQ muestran una marcada disonancia en comparación con la demografía de la población general."
+msgstr ""
+"Aprender a codificar es difícil, especialmente si te encuentras con muchos apoyos negativos en el camino. Es probable que las personas de grupos minoritarios se encuentren con apoyos negativos en la medida que tratan de lograr un trabajo en tecnología.  Las estadísticas actuales en carreras tecnológicas, de mujeres, personas de color o comunidades LBGTQ muestran una marcada discrepancia comparado con la demografía de la población general."
 
-#: templates/homepage.html:203
+#: templates/homepage.html:190
 msgid "Computer Science students"
-msgstr "Los estudiantes de Ciencias de la Computación en las universidades de los Estados Unidos no representan la demografía de nuestro país. Hay muchas razones para esta subrepresentación de la diversidad en las carreras tecnológicas: desde la falta de exposición temprana, el desánimo repetido o la falta de acceso a una educación STEM de calidad, por nombrar algunas."
+msgstr ""
+"Los estudiantes de Ciencias de la Computación en las universidades de los Estados Unidos no representan la demografía de nuestro país. Hay muchas razones para esta baja representación en la diversidad de carreras tecnológicas: desde la falta de exposición temprana, el desánimo repetido o la falta de acceso a una educación STEM de calidad, por nombrar algunas."
 
-#: templates/homepage.html:206
+#: templates/homepage.html:202
 msgid "Why Coders Boost?"
 msgstr "¿Por qué Coder's Boost?"
 
-#: templates/homepage.html:208
+#: templates/homepage.html:204
 msgid "Coders Boost is designed"
-msgstr "Coder's Boost está diseñado para asegurarle que pertenece a este profesión y proporcionar un refuerzo positivo para alentarte en su viaje. La motivación está muy conectada a los resultados educativos. Aprender a codificar es un proceso largo y, a veces, arduo, especialmente si lo hace de forma remota.  Coder's Boost está aquí para ayudar a los programadores emergentes a evitar que su motivación disminuya, un impulso a la vez.  ¿Por qué? Porque la tecnología te necesita. Tu perspectiva es valiosa.  Puedes ayudar a muchas personas como usted gracias a su representación y trabajo duro. Tu perteneces aquí."
+msgstr ""
+"Coder's Boost está diseñado para asegurarte que pertenece a esta profesión y proporcionar un refuerzo positivo para alentarte en tu viaje. La motivación está muy conectada a los resultados educativos. Aprender a codificar es un proceso largo y, a veces, arduo, especialmente si se hace en forma remota. Coder's Boost está aquí para ayudar a los programadores que comienzan sus carreras a evitar que su motivación disminuya, un impulso a la vez. ¿Por qué? Porque la tecnología te necesita. Tu perspectiva es valiosa. Tu puedes ayudar a muchas personas a través de tu ejemplo y trabajo duro. Tú perteneces aquí."
 
-#: templates/homepage.html:216
+#: templates/homepage.html:207
 msgid "What next?"
-msgstr "¿Qué sigue?"
+msgstr "¿Cual es el próximo paso?"
 
-#: templates/homepage.html:219
+#: templates/homepage.html:210
 msgid "What next text"
-msgstr "Iniciar sesión con Github para salvar sus impulsos favoritos y registrarse para recibir un impulso diario por correo electrónico."
+msgstr ""
+"Iniciar sesión con Github para guardar tus impulsos favoritos y registrarte para recibir un impulso diario por correo electrónico."
 
 #: templates/navbar.html:19
 msgid "Home"
@@ -74,7 +78,7 @@ msgstr "Idioma"
 
 #: templates/navbar.html:35
 msgid "English"
-msgstr "Inglés"
+msgstr ""
 
 #: templates/navbar.html:36
 msgid "Spanish"
@@ -88,32 +92,31 @@ msgstr "Cerrar sesión"
 msgid "Login with GitHub"
 msgstr "Iniciar sesión con Github"
 
-#: templates/profile.html:11
+#: templates/profile.html:13
 msgid "Welcome back"
 msgstr "¡Bienvenido de nuevo "
 
-#: templates/profile.html:12
+#: templates/profile.html:14
 msgid "Please take some time and enjoy your favorite encouragements."
 msgstr "Por favor, tómese un tiempo y disfrute de sus cumplidos favoritos."
 
-#: templates/profile.html:32
-#, fuzzy
+#: templates/profile.html:47
 msgid "Subscribe to get a daily boost"
 msgstr "Suscríbete para recibir un impulso diario"
 
-#: templates/resources.html:11
+#: templates/resources.html:18
 msgid "Resources:"
 msgstr "Recursos:"
 
-#: templates/resources.html:13
+#: templates/resources.html:20
 msgid "Coding Communities"
 msgstr "Comunidades de Codificación"
 
-#: templates/resources.html:42
+#: templates/resources.html:49
 msgid "Inspiring Articles or Sites"
 msgstr "Artículos o Sitios Inspiradores"
 
-#: templates/resources.html:71
+#: templates/resources.html:78
 msgid "Related Research"
 msgstr "Investigación Relacionada"
 
