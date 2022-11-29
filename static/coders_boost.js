@@ -52,8 +52,9 @@ function copyText() {
       method: 'GET',
       credentials: 'include',  //sends user credentials, so it knows which user is sending request
     })
-    .then(function () {   //anonymous function, not doing anything with response (vs code suggested this)
-      return false 
+    .then(function () {
+      window.location.reload()   //anonymous function, not doing anything with response (vs code suggested this)
+      return
     })
   }
     //make an event listener for add email for push notifications
