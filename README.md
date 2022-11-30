@@ -46,6 +46,10 @@ Future improvements to Coder's Boost could be adding more languages, automate a 
 * https://github.com/python-babel/babel 
 * https://jinja.palletsprojects.com/en/3.0.x/integration/ 
 
+### Other Inspiration Resoures
+* https://www.theverge.com/2017/8/16/16153740/tech-diversity-problem-science-history-explainer-inequality
+* https://hbr.org/2020/12/to-increase-diversity-u-s-tech-companies-need-to-follow-the-talent
+
 # Developing
 ### Run
 ```
