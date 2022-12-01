@@ -3,7 +3,9 @@
 app = "codersboost"
 kill_signal = "SIGINT"
 kill_timeout = 5
-processes = []
+[processes]
+web = "gunicorn app:app"
+email = "flask send-daily-email"
 
 [build]
   builder = "paketobuildpacks/builder:base"
@@ -19,7 +21,7 @@ processes = []
 [[services]]
   http_checks = []
   internal_port = 5000
-  processes = ["app"]
+  processes = ["web"]
   protocol = "tcp"
   script_checks = []
   [services.concurrency]

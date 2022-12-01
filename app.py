@@ -166,7 +166,7 @@ def update_email():
 def send_daily_email():
     #get an encouragement:
     #get random encouragement filtered by language (with get_locale()) and return one random pick from db
-    encouragement = Encouragement.query.filter_by(language="").order_by(func.random()).first()
+    encouragement = Encouragement.query.filter_by(language="en").order_by(func.random()).first()
     #get all users with an email address
     users = User.query.filter(User.email != None).all()
     #iterate through all users
