@@ -59,11 +59,11 @@ login_manager = LoginManager()
 def load_user(user_id):
     return User.query.get(user_id)
 
-def connect_to_db(flask_app, db_uri="postgresql:///coders_boost", echo=True):
+def connect_to_db(flask_app, db_uri="postgresql:///coders_boost", echo=False):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    flask_app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {'pool_pre_ping': True}
+    flask_app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {'pool_pre_ping': True, "pool_recycle": 300}
 
     db.app = flask_app
     db.init_app(flask_app)
