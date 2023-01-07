@@ -3,7 +3,7 @@
 import click
 from flask.cli import with_appcontext
 from flask import (Flask, flash, redirect, render_template, request, session,
-                   url_for)
+                   url_for, jsonify)
 from flask_babel import Babel
 from flask_dance.contrib.github import github
 from flask_login import current_user, login_required, logout_user
@@ -77,6 +77,20 @@ def save_favorite():
     save_user_encouragement(current_user.id, encouragement_id)
 
     return ""
+
+@app.route("/next-encouragement")
+def next_encouragement():
+    """Returns next encouragement text."""
+
+    if current_user.is_authenticated: #is_authenticated is part of flask login (see flask docs)
+        #if the user is logged in, save that they've seen the encouragement
+        encouragement = get_next_encouragement(current_user, get_locale()) #get the language with get_locale()
+        save_encouragement_seen(current_user, encouragement)
+    else:
+        #get random encouragement filtered by language (with get_locale()) and return one random pick from db
+        encouragement = Encouragement.query.filter_by(language=get_locale()).order_by(func.random()).first()
+
+    return jsonify(text=encouragement.text)
 
 @app.route("/github") #Github OAuth route
 def login():
