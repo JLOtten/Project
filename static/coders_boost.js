@@ -53,7 +53,7 @@ function getNextEncouragement() {
   credentials: 'include',  //sends user credentials, so it knows which user is sending request
 })
 .then((response) => response.json())
-.then((data) => console.log(data)) 
+.then((data) => document.getElementById("encouragement-text").innerHTML = data.text) //changed this here to make an AJAX request
 .catch((error) => {  // in the case there was some error
   console.error('Error:', error); // log an error to the console
 });
