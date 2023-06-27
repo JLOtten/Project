@@ -68,3 +68,8 @@ pybabel update -i messages.pot -l en -d translations
 # compile
 pybabel compile -d translations
 ```
+
+### Testing
+```
+python -m pytest .
+```

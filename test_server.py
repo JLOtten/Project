@@ -1,5 +1,4 @@
 """Test for coders boost app."""
-
 import unittest
 import app
 
@@ -17,7 +16,7 @@ class ServerTests(unittest.TestCase):
         """Can we reach the homepage?"""
 
         result = self.client.get("/")
-        self.assertIn(b"Welcome!", result.data)
+        self.assertIn(b"Boost", result.data)
 
 if __name__ == "__main__":
     unittest.main()

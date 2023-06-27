@@ -4,13 +4,6 @@ from model import db, User, Encouragement, UserEncouragement, connect_to_db
 from datetime import datetime
 from sqlalchemy.orm.exc import NoResultFound
 
-def create_user(email, password):
-    """Create and return a new user."""
-
-    user = User(email=email, password=password)
-
-    return user
-
 def save_encouragement(text, language):
     """Save generated encouragements from Open AI API"""
 

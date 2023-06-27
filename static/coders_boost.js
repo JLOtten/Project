@@ -69,6 +69,27 @@ function selectLanguage(language) {
       window.location.reload()   //anonymous function, not doing anything with response (vs code suggested this)
     })
 }
+
+function retryFetch(url, options, retries = 3) {
+  return fetch(url, options)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      if (retries > 0) {
+        console.log(`Retrying fetch. ${retries} retries left.`);
+        return retryFetch(url, options, retries - 1);
+      } else {
+        console.log('Fetch failed after all retries.');
+        throw error;
+      }
+    });
+}
+
 //make an event listener for add email for push notifications
 function updateEmail() {
   //getting value of text field entered for email
