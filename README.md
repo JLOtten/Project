@@ -51,7 +51,7 @@ Future improvements to Coder's Boost could be adding more languages, automate a 
 * https://hbr.org/2020/12/to-increase-diversity-u-s-tech-companies-need-to-follow-the-talent
 
 # Developing
-### Run
+## Run
 ```
 pip install -r requirements.txt
 flask run
@@ -69,7 +69,15 @@ pybabel update -i messages.pot -l en -d translations
 pybabel compile -d translations
 ```
 
-### Testing
+## Testing
 ```
 python -m pytest .
+```
+
+# Deploying
+
+Coder's Boost is currently deployed with [fly.io](https://fly.io)
+
+```
+fly deploy
 ```
