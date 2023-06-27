@@ -46,6 +46,19 @@ function deleteFavoriteEncouragement(encouragement_id) {
     });
 }
 
+//makes an AJAX request for getting new encouragments
+function getNextEncouragement() {
+  fetch(`${window.location.protocol}//${window.location.host}/next-encouragement`, { 
+  method: 'GET',
+  credentials: 'include',  //sends user credentials, so it knows which user is sending request
+})
+.then((response) => response.json())
+.then((data) => document.getElementById("encouragement-text").innerHTML = data.text) //changed this here to make an AJAX request
+.catch((error) => {  // in the case there was some error
+  console.error('Error:', error); // log an error to the console
+});
+}
+
 //language selection dropdown button triggers translation of site to en or es
 function selectLanguage(language) {
   fetch(`${window.location.protocol}//${window.location.host}/language/${language}`, { //changes language using variable in route
@@ -56,6 +69,27 @@ function selectLanguage(language) {
       window.location.reload()   //anonymous function, not doing anything with response (vs code suggested this)
     })
 }
+
+function retryFetch(url, options, retries = 3) {
+  return fetch(url, options)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      if (retries > 0) {
+        console.log(`Retrying fetch. ${retries} retries left.`);
+        return retryFetch(url, options, retries - 1);
+      } else {
+        console.log('Fetch failed after all retries.');
+        throw error;
+      }
+    });
+}
+
 //make an event listener for add email for push notifications
 function updateEmail() {
   //getting value of text field entered for email
