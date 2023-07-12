@@ -53,6 +53,9 @@ Future improvements to Coder's Boost could be adding more languages, automate a 
 # Developing
 ## Run
 ```
+# activate virtual environment
+source env/bin/activate
+
 pip install -r requirements.txt
 flask run
 ```
