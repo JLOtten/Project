@@ -10,6 +10,7 @@ function favoriteEncouragement() {
   let element = document.getElementById("favoriteEncouragement");
 
   const encouragement_id = element.getAttribute("data-value");
+  console.log(`this is my encouragement I'm saving ${encouragement_id}`);
 
   fetch(`${window.location.protocol}//${window.location.host}/save-favorite`, { //this constructs the url
     method: 'POST',
@@ -46,17 +47,39 @@ function deleteFavoriteEncouragement(encouragement_id) {
     });
 }
 
+let encouragementId = 0; //global variable to store encouragement id
+
 //makes an AJAX request for getting new encouragments
 function getNextEncouragement() {
+  
   fetch(`${window.location.protocol}//${window.location.host}/next-encouragement`, { 
   method: 'GET',
   credentials: 'include',  //sends user credentials, so it knows which user is sending request
 })
 .then((response) => response.json())
-.then((data) => document.getElementById("encouragement-text").innerHTML = data.text) //changed this here to make an AJAX request
+.then((data) => {
+  (document.getElementById("encouragement-text").innerHTML = data.text); 
+  
+  encouragementId = data.id; //not updating encouragementId
+  console.log(data);
+})//changed this here to make an AJAX request
 .catch((error) => {  // in the case there was some error
   console.error('Error:', error); // log an error to the console
+
+ 
 });
+document.getElementById("share-buttons").style.visibility ='visible';
+console.log(encouragementId);
+setButtonValuesById(encouragementId);
+
+}
+
+function setButtonValuesById(id) {
+  document.getElementById("favoriteEncouragement").setAttribute("data-value", id);
+  //document.getElementById("facebook")
+  //document.getElementById("email").value = id;
+  //document.getElementById("copyButton").value = id;
+    
 }
 
 //language selection dropdown button triggers translation of site to en or es

@@ -90,7 +90,7 @@ def next_encouragement():
         #get random encouragement filtered by language (with get_locale()) and return one random pick from db
         encouragement = Encouragement.query.filter_by(language=get_locale()).order_by(func.random()).first()
 
-    return jsonify(text=encouragement.text)
+    return jsonify(text=encouragement.text, id=encouragement.id)
 
 @app.route("/github") #Github OAuth route
 def login():

@@ -79,35 +79,36 @@
             <button type="submit" onclick="getNextEncouragement()" class="btn btn-info btn-lg" style="background-color: rgba(13, 202, 240, 0.25);">{{ _('Get your daily boost') }}
             </button>
       </div>
-      {% if encouragement %}
-      <div class="row">
+     
+      <div class="row" id="share-buttons" style="visibility: hidden;">
         <div class="col">
-          {% if current_user.is_authenticated and encouragement %}
+          {% if current_user.is_authenticated %}
           <!-- Favorite button starts here -->
           <button type="button" class="btn btn-primary-outline text-start" id="favoriteEncouragement"
             data-bs-toggle="tooltip" data-bs-placement="top" title="Click to save to your page" ,
-            data-value="{{ encouragement.id }}" onclick="favoriteEncouragement()">
+            data-value="" onclick="favoriteEncouragement()">
             <i class="fa fa-heart fa-l" style="color: crimson;"></i>
           </button>
           <!-- Favorite button ends here -->
           {% endif %}
+          
           <!-- Facebook (url) -->
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('homepage', encouragement_id=encouragement.id, _external=True) | urlencode }}"><button class="btn btn-primary-outline"><i class="fa-brands fa-facebook-f fa-l" style="color: dimgray"></i>
+            <a href=""><button class="btn btn-primary-outline" id="facebook"><i class="fa-brands fa-facebook-f fa-l" style="color: dimgray"></i>
           </a>
           </button>
 
           <!-- Email (subject, body) -->
-          <a href="mailto:?subject=Coders%20Boost&body={{ encouragement.text | urlencode }}"><button class="btn btn-primary-outline" role="button"><i class="fa-regular fa-envelope fa-l" style="color:dimgray"></i></a></button>
+          <a href="mailto:?subject=Coders%20Boost&body="><button class="btn btn-primary-outline" id="email" role="button"><i class="fa-regular fa-envelope fa-l" style="color:dimgray"></i></a></button>
 
           <!-- The button used to copy the text -->
           <button class="btn btn-primary-outline" id="copyButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy link"
-            data-value="{{ url_for('homepage', encouragement_id=encouragement.id, _external=True) }}"
+            data-value=""
             onclick="copyText()">
             <i class="fa-solid fa-link fa-l" style="color:dimgray"></i>
           </button>
         </div>
       </div>
-      {% endif %}
+     
 
     </div>
     <div class="col-md">
