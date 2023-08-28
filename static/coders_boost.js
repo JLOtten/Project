@@ -9,7 +9,7 @@ function copyText() {
 function favoriteEncouragement() {
   let element = document.getElementById("favoriteEncouragement");
 
-  const encouragement_id = element.getAttribute("data-value");
+  const encouragement_id = element.getAttribute("data-value");                   //Problem here, not getting the value of the button
   console.log(`this is my encouragement I'm saving ${encouragement_id}`);
 
   fetch(`${window.location.protocol}//${window.location.host}/save-favorite`, { //this constructs the url
@@ -51,18 +51,20 @@ let encouragementId = 0; //global variable to store encouragement id
 
 //makes an AJAX request for getting new encouragments
 function getNextEncouragement() {
-  
+  let encouragementId = 0; //global variable to store encouragement id
   fetch(`${window.location.protocol}//${window.location.host}/next-encouragement`, { 
   method: 'GET',
   credentials: 'include',  //sends user credentials, so it knows which user is sending request
 })
 .then((response) => response.json())
 .then((data) => {
-  (document.getElementById("encouragement-text").innerHTML = data.text); 
+  document.getElementById("encouragement-text").innerHTML = data.text; 
   
   encouragementId = data.id; //not updating encouragementId
   console.log(data);
+  setButtonValuesById(encouragementId);
 })//changed this here to make an AJAX request
+
 .catch((error) => {  // in the case there was some error
   console.error('Error:', error); // log an error to the console
 
@@ -74,7 +76,14 @@ setButtonValuesById(encouragementId);
 
 }
 
-function setButtonValuesById(id) {
+function shareOnFacebook() {
+  const url = window.location.href;
+  const appId = 'YOUR_APP_ID'; // replace with your Facebook App ID
+  const shareUrl = `http://www.facebook.com/sharer.php?u=https://example.com`;
+  window.open(shareUrl, '_blank');
+}
+
+function setButtonValuesById(id, encouragementId) {
   document.getElementById("favoriteEncouragement").setAttribute("data-value", id);
   //document.getElementById("facebook")
   //document.getElementById("email").value = id;
