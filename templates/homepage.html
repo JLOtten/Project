@@ -70,7 +70,7 @@
         <p style="font-size: 1.2em;">{{ _('Intro') }}</p>
       </div>
       <div class="row">
-        <h1 id="encouragement-text"></h1>
+        <h1 id="encouragement-text">{{ encouragement.text|default("") }}</h1>
       </div>
       <div class="row">
         <div class="col">
@@ -93,7 +93,7 @@
           {% endif %}
           
           <!-- Facebook (url) -->
-            <a href="#" onClick="shareOnFacebook()""><button class="btn btn-primary-outline" id="facebook"><i class="fa-brands fa-facebook-f fa-l" style="color: dimgray"></i>
+            <a href="#" onClick="shareOnFacebook()"><button class="btn btn-primary-outline" id="facebook"><i class="fa-brands fa-facebook-f fa-l" style="color: dimgray"></i>
           </a>
           </button>
 
