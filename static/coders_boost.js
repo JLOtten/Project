@@ -6,7 +6,7 @@ function copyText () {
 }
 
 // make an event listener for favorite button
-function favoriteEncouragement() {
+function favoriteEncouragement () {
   const element = document.getElementById('favoriteEncouragement')
 
   const encouragementId = element.getAttribute('data-value') // Problem here, not getting the value of the button
@@ -29,7 +29,7 @@ function favoriteEncouragement() {
 }
 
 // make an event listener for delete button
-function deleteFavoriteEncouragement(encouragementId) {
+function deleteFavoriteEncouragement (encouragementId) {
   fetch(`${window.location.protocol}//${window.location.host}/delete-favorite`, { // this constructs the url
     method: 'POST',
     headers: {
@@ -48,7 +48,7 @@ function deleteFavoriteEncouragement(encouragementId) {
 }
 
 // makes an AJAX request for getting new encouragments
-function getNextEncouragement() {
+function getNextEncouragement () {
   let encouragementId = 0 // global variable to store encouragement id
   fetch(`${window.location.protocol}//${window.location.host}/next-encouragement`, {
     method: 'GET',
@@ -70,7 +70,7 @@ function getNextEncouragement() {
   setButtonValuesById(encouragementId)
 }
 
-function shareOnFacebook() {
+function shareOnFacebook () {
   const url = window.location.href
   const shareUrl = `http://www.facebook.com/sharer.php?u=${url}`
   window.open(shareUrl, '_blank')
@@ -87,7 +87,7 @@ function setButtonValuesById (id) {
 }
 
 // language selection dropdown button triggers translation of site to en or es
-function selectLanguage(language) {
+function selectLanguage (language) {
   fetch(`${window.location.protocol}//${window.location.host}/language/${language}`, { // changes language using variable in route
     method: 'GET',
     credentials: 'include' // sends user credentials, so it knows which user is sending request
@@ -97,7 +97,7 @@ function selectLanguage(language) {
     })
 }
 
-function retryFetch(url, options, retries = 3) {
+function retryFetch (url, options, retries = 3) {
   return fetch(url, options)
     .then(response => {
       if (!response.ok) {
@@ -118,7 +118,7 @@ function retryFetch(url, options, retries = 3) {
 }
 
 // make an event listener for add email for push notifications
-function updateEmail() {
+function updateEmail () {
   // getting value of text field entered for email
   const email = document.getElementById('updateEmailId').value
   fetch(`${window.location.protocol}//${window.location.host}/profile/email`, { // this constructs the url
@@ -127,7 +127,7 @@ function updateEmail() {
       'Content-Type': 'application/json' // tells server this is a json request
     },
     credentials: 'include', // sends user credentials, so it knows which user is sending request
-    body: JSON.stringify({ email: email }) // takes JS object and turns it into a string
+    body: JSON.stringify({ email }) // takes JS object and turns it into a string
   }).then(
     console.log('submitted email')
   ).catch((error) => { // in the case there was some error
