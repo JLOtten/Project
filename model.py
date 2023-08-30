@@ -29,7 +29,7 @@ class Encouragement(db.Model):
 
     id = db.Column(db.Integer, primary_key = True, autoincrement = True,)
     text = db.Column(db.String, unique = True,)
-    language = db.Column(db.String,)
+    language = db.Column(db.String, default="en")
     created_at = db.Column(db.DateTime,)
     
     user_encouragements = db.relationship("UserEncouragement", back_populates = "encouragement")

@@ -51,12 +51,32 @@ Future improvements to Coder's Boost could be adding more languages, automate a 
 * https://hbr.org/2020/12/to-increase-diversity-u-s-tech-companies-need-to-follow-the-talent
 
 # Developing
+
+## Setup
+```
+# create virtual environment
+# using python ~3.9
+python -m venv env
+source env/bin/activate
+
+cp .env.template .env
+# manually update values as needed
+
+pip install -r requirements.txt
+
+# install postgres (recent versions)
+brew install postgresql@15
+
+# seed database
+createdb coders_boost
+python seed_database.py
+
+```
+
 ## Run
 ```
 # activate virtual environment
 source env/bin/activate
-
-pip install -r requirements.txt
 flask run
 ```
 
