@@ -1,7 +1,8 @@
 function copyText () {
   const element = document.getElementById('copyButton')
   // Copy the text inside the text field
-  navigator.clipboard.writeText(element.getAttribute('data-value'))
+  const encouragementId = element.getAttribute('data-value')
+  navigator.clipboard.writeText(`${window.location.protocol}//${window.location.host}?encouragement_id=${encouragementId}`)
 }
 
 // make an event listener for favorite button
@@ -69,7 +70,6 @@ function getNextEncouragement() {
 document.getElementById("share-buttons").style.visibility ='visible';
 console.log(encouragementId);
 setButtonValuesById(encouragementId);
-
 }
 
 function shareOnFacebook() {
@@ -78,12 +78,14 @@ function shareOnFacebook() {
   window.open(shareUrl, '_blank');
 }
 
-function setButtonValuesById(id, encouragementId) {
-  document.getElementById("favoriteEncouragement").setAttribute("data-value", id);
-  //document.getElementById("facebook")
-  //document.getElementById("email").value = id;
-  //document.getElementById("copyButton").value = id;
-    
+function setButtonValuesById (id) {
+  const favoriteEncouragementElem = document.getElementById('favoriteEncouragement')
+  if (favoriteEncouragementElem) {
+    favoriteEncouragementElem.setAttribute('data-value', id)
+  }
+  // document.getElementById("facebook")
+  // document.getElementById("email").value = id;
+  document.getElementById('copyButton').setAttribute('data-value', id)
 }
 
 //language selection dropdown button triggers translation of site to en or es
