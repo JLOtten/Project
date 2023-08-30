@@ -65,7 +65,7 @@ function getNextEncouragement () {
     .catch((error) => { // in the case there was some error
       console.error('Error:', error) // log an error to the console
     })
-  document.getElementById('share-buttons').style.visibility ='visible'
+  document.getElementById('share-buttons').style.visibility = 'visible'
   console.log(encouragementId)
   setButtonValuesById(encouragementId)
 }
