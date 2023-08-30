@@ -1,11 +1,10 @@
-function copyText() {
-  let element = document.getElementById("copyButton");
+function copyText () {
+  const element = document.getElementById('copyButton')
   // Copy the text inside the text field
-  navigator.clipboard.writeText(element.getAttribute("data-value"));
-
+  navigator.clipboard.writeText(element.getAttribute('data-value'))
 }
 
-//make an event listener for favorite button
+// make an event listener for favorite button
 function favoriteEncouragement() {
   let element = document.getElementById("favoriteEncouragement");
 
@@ -63,12 +62,9 @@ function getNextEncouragement() {
   encouragementId = data.id; //not updating encouragementId
   console.log(data);
   setButtonValuesById(encouragementId);
-})//changed this here to make an AJAX request
-
+}) //changed this here to make an AJAX request
 .catch((error) => {  // in the case there was some error
   console.error('Error:', error); // log an error to the console
-
- 
 });
 document.getElementById("share-buttons").style.visibility ='visible';
 console.log(encouragementId);
@@ -78,8 +74,7 @@ setButtonValuesById(encouragementId);
 
 function shareOnFacebook() {
   const url = window.location.href;
-  const appId = 'YOUR_APP_ID'; // replace with your Facebook App ID
-  const shareUrl = `http://www.facebook.com/sharer.php?u=https://example.com`;
+  const shareUrl = `http://www.facebook.com/sharer.php?u=${url}`;
   window.open(shareUrl, '_blank');
 }
 
@@ -138,4 +133,4 @@ function updateEmail() {
   ).catch((error) => {  // in the case there was some error
     console.error('Error:', error); // log an error to the console
   });
-};
+}
