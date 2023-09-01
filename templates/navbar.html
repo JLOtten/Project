@@ -8,13 +8,17 @@
 }
 
 </style>
-<nav class="navbar navbar-expand-xl navbar-lt py-3">
+<nav class="navbar navbar-expand-xl navbar-lt py-3" role="navigation">
   <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+    <img src="/static/images/coder-illustration.png" alt="Logo of woman in glasses sitting with computer" width="30" height="24" class="d-inline-block align-text-top">
+    Coder's Boost
+  </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link {{ 'active' if 'profile' not in request.path and 'resources' not in request.path }}" aria-current="page" href="{{ url_for('homepage') }}">{{ _('Home') }}</a>
         </li>
