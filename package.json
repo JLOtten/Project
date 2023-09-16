@@ -1,0 +1,26 @@
+{
+  "name": "coders_boost",
+  "version": "1.0.0",
+  "description": "*Now deployed on:* https://codersboost.com/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JLOtten/coders_boost.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JLOtten/coders_boost/issues"
+  },
+  "homepage": "https://github.com/JLOtten/coders_boost#readme",
+  "devDependencies": {
+    "eslint": "^8.48.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.0.2",
+    "eslint-plugin-promise": "^6.1.1"
+  }
+}
