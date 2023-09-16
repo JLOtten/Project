@@ -65,8 +65,8 @@
   }
 </style>
 <div class="col-md position-relative text-white">
-  <img src="{{ url_for('static', filename='images/MomCoding.png') }}" style="width: 100vw; height: 100%; z-index: -1;">
-  <div class="position-absolute top-0 start-0">
+  <img src="{{ url_for('static', filename='images/MomCoding.png') }}" style="width: 100vw; height: 100%; z-index: -1; opacity: 0.8;">
+  <div class="position-absolute top-0 end-0 text-end text-wrap p-4">
     <h1 style="font-weight: bold;">Coder’s Boost</h1>
     <p style="font-size: 1.2em;">{{ _('Intro') }}</p>
     <h1 id="encouragement-text"></h1>
@@ -166,7 +166,7 @@
   </div>
 </div>
 <!--DALLE Image Carousel ends here-->
-<div class="container text-white" style="max-width: none; margin-left: 0; margin-right: 0; background: #8928EB;">
+<div class="container text-white" style="max-width: none; margin-left: 0; margin-right: 0; background: linear-gradient(to right, #8a28ebcd, #a157ebe1); transition: background 1s;">
   <div class="row py-3" id="about-text">
     <div class="col-md-2"></div>
     <div class="col-md">
