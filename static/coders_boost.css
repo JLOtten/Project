@@ -1,9 +1,10 @@
 body {
-    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-family:'Titillium Web', sans-serif;
+    
   }
 
 h1{
-    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-family:'Titillium Web', sans-serif;
     font-weight: 900;
 }
 h2 {

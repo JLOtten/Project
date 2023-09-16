@@ -3,19 +3,19 @@
 {% block title %} Coder's Boost {% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container text-white" style="max-width: none; margin-left: 0; margin-right: 0; background: #8928EB;">
   <div class="row">
     <div class="col-md-7">
       <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-11">
           {% if current_user.is_authenticated %}
-          <h1>😄 {{ _('Welcome back') }} {{current_user.username}}!</h1>
-          <h3>{{_('Please take some time and enjoy your favorite encouragements.') }}</h3>
+          <h1 class="py-3">{{ _('Welcome back') }} {{current_user.username}} 😄!</h1>
+          <h3 class="py-3">{{_('Please take some time and enjoy your favorite encouragements.') }}</h3>
           {% endif %}
           <ul>
             {% for user_encouragement in user_encouragements %}
-            <div id="encouragement-{{ user_encouragement.encouragement_id }}">
+            <div id="encouragement-{{ user_encouragement.encouragement_id }}" class="py-1" style="font-size: large;">
               <div class="row">
                 <div class="col-9">
                   <li style="list-style-type:'👏 ';">
@@ -26,7 +26,7 @@
                   <button id="{{ user_encouragement.encouragement_id }}" type="button" class="btn btn-primary-outline"
                     onClick="deleteFavoriteEncouragement(this.id)" data-bs-toggle="tooltip" data-bs-placement="top"
                     title="Click to remove from favorites">
-                    <i class="fa-solid fa-trash" style="color:dimgray"></i>
+                    <i class="fa-solid fa-trash" style="color:white"></i>
                   </button>
                 </div>
                 </li>
@@ -36,20 +36,9 @@
           </ul>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-11">
-          <form class="form">
-            <div class="form-group col-md-6 mb-2">
-              <input type="email" class="form-control" id="updateEmailId" placeholder="Enter email">
-            </div>
-            <button type="submit" class="btn btn-info col-md-6 mb-2" style="background-color: rgba(13, 202, 240, 0.25);"
-              id="email" onClick="updateEmail()">{{ _('Subscribe to get a daily boost') }}</button>
-          </form>
-        </div>
-      </div>
+      
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5 mt-5 mb-5 ml-5 mr-5">
       <div class="d-flex justify-content-center">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
