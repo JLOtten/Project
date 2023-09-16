@@ -5,19 +5,26 @@
 {% block body %}
 <style>
   .homepage-title {
-    height: 100px;
+    height: 400px;
+    font-family:'Titillium Web', sans-serif;
+    color: white;
+    font-size: xx-large;
+    font-weight: 900;
   }
 
   .sm-intro {
-    text-transform: uppercase;
+    font-family:'Titillium Web', sans-serif;
     font-weight: lighter;
-    font-size: smaller;
+    font-size: small;
+    color: white;
   }
 
   .lg-encouragement {
     text-transform: none;
     font-size: large;
-    font-weight: none;
+    font-weight: 400;
+    font-family:'Titillium Web', sans-serif;
+    color: white;
   }
 
   .carousel {
@@ -28,13 +35,14 @@
   }
 
   #encouragement-text {
-    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-family:'Titillium Web', sans-serif;
     font-weight: 900;
+    color: white;
   }
 
   #about-text {
     font-size: 1.5em;
-    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-family:'Titillium Web', sans-serif;
     line-height: 1.5;
   }
 
@@ -46,7 +54,7 @@
 
   #bottom-gray-text {
     font-size: 1.5em;
-    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-family:'Titillium Web', sans-serif;
     line-height: 1.5;
   }
 
@@ -56,77 +64,63 @@
     margin-right: 0;
   }
 </style>
-<div class="container" id="top-homepage">
-  <div class="row align-items-center">
-    <div class="col-md">
-      <div class="row">
-        <div class="col">
-          <h1 style='font-family: Inter, "Helvetica Neue", Arial, sans-serif; font-variant-caps: small-caps;'>👏 Coder’s
-            Boost 👏</h1>
-        </div>
 
+<div class="col-md position-relative text-white">
+  <img src="{{ url_for('static', filename='images/MomCoding.png') }}" style="width: 100vw; height: 100%; z-index: -1; opacity: 0.8;">
+  <div class="position-absolute top-0 end-0 text-end text-wrap p-4">
+    <h1 style="font-weight: bold;">Coder’s Boost</h1>
+    <p style="font-size: 1.2em;">{{ _('Intro') }}</p>
+    <h1 id="encouragement-text"></h1>
+    <div class="row">
+      <div class="col">
+        <br>
+        <!--Get encouragement button starts here -->
+        <button type="submit" onclick="getNextEncouragement()" class="btn btn-info btn-lg text-white" style="background-color:  #8928EB; border: 1px solid black;">{{ _('Get your daily boost') }}
+        </button>
       </div>
-      <div class="row">
-        <p style="font-size: 1.2em;">{{ _('Intro') }}</p>
-      </div>
-      <div class="row">
-        <h1 id="encouragement-text">{{ encouragement.text|default("") }}</h1>
-      </div>
-      <div class="row">
-        <div class="col">
-          <br>
-          <!--Get encouragement button starts here -->
-            <button type="submit" onclick="getNextEncouragement()" class="btn btn-info btn-lg" style="background-color: rgba(13, 202, 240, 0.25);">{{ _('Get your daily boost') }}
-            </button>
-      </div>
-     
-      <div class="row" id="share-buttons" style="visibility: hidden;">
-        <div class="col">
-          {% if current_user.is_authenticated %}
-          <!-- Favorite button starts here -->
-          <button type="button" class="btn btn-primary-outline text-start" id="favoriteEncouragement"
-            data-bs-toggle="tooltip" data-bs-placement="top" title="Click to save to your page" ,
-            data-value="" onclick="favoriteEncouragement()">
-            <i class="fa fa-heart fa-l" style="color: crimson;"></i>
-          </button>
-          <!-- Favorite button ends here -->
-          {% endif %}
-          
-          <!-- Facebook (url) -->
-            <a href="#" onClick="shareOnFacebook()"><button class="btn btn-primary-outline" id="facebook"><i class="fa-brands fa-facebook-f fa-l" style="color: dimgray"></i>
-          </a>
-          </button>
-
-          <!-- Email (subject, body) -->
-          <a href="mailto:?subject=Coders%20Boost&body="><button class="btn btn-primary-outline" id="email" role="button"><i class="fa-regular fa-envelope fa-l" style="color:dimgray"></i></a></button>
-
-          <!-- The button used to copy the text -->
-          <button class="btn btn-primary-outline" id="copyButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy link"
-            data-value=""
-            onclick="copyText()">
-            <i class="fa-solid fa-link fa-l" style="color:dimgray"></i>
-          </button>
-        </div>
-      </div>
-     
-
     </div>
-    <div class="col-md">
-      <div class="row"><img src="{{ url_for('static', filename='images/coder-illustration.png') }}"></div>
+    <div class="row" id="share-buttons" style="visibility: hidden;">
+      <div class="col">
+        {% if current_user.is_authenticated %}
+        <!-- Favorite button starts here -->
+        <button type="button" class="btn btn-primary-outline text-start" id="favoriteEncouragement"
+          data-bs-toggle="tooltip" data-bs-placement="top" title="Click to save to your page" ,
+          data-value="" onclick="favoriteEncouragement()">
+          <i class="fa fa-heart fa-l" style="color: crimson;"></i>
+        </button>
+        <!-- Favorite button ends here -->
+        {% endif %}
+
+        <!-- Facebook (url) -->
+        <a href="#" onClick="shareOnFacebook()"><button class="btn btn-primary-outline" id="facebook"><i class="fa-brands fa-facebook-f fa-l" style="color: white"></i>
+        </a>
+        </button>
+
+        <!-- Email (subject, body) -->
+        <a href="mailto:?subject=Coders%20Boost&body="><button class="btn btn-primary-outline" id="email" role="button"><i class="fa-regular fa-envelope fa-l" style="color:white"></i></a></button>
+
+        <!-- The button used to copy the text -->
+        <button class="btn btn-primary-outline" id="copyButton" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy link"
+          data-value=""
+          onclick="copyText()">
+          <i class="fa-solid fa-link fa-l" style="color:white"></i>
+        </button>
+      </div>
     </div>
   </div>
 </div>
+</div>
 <!--DALLE Image Carousel Starts Here-->
-<div class="container  bg-info full-screen" id="carousel-container" style="--bs-bg-opacity: .25;">
+<div class="container" id="carousel-container">
   <div class="row m-3">
     <div class="col-md">
       <div class="d-flex justify-content-center">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item">
               <img src="{{ url_for('static', filename='images/MomCoding.png') }}" class="d-block w-100" alt="Mom coding with her two sons.">
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item active">
               <img src="{{ url_for('static', filename='images/SunsetCoders.png') }}" class="d-block w-100" alt="Two women of color pair programming.">
             </div>
             <div class="carousel-item">
@@ -173,11 +167,11 @@
   </div>
 </div>
 <!--DALLE Image Carousel ends here-->
-<div class="container" style="max-width: none; margin-left: 0; margin-right: 0;">
+<div class="container text-white" style="max-width: none; margin-left: 0; margin-right: 0; background: linear-gradient(to right, #8a28ebcd, #a157ebe1); transition: background 1s;">
   <div class="row py-3" id="about-text">
     <div class="col-md-2"></div>
     <div class="col-md">
-      <h2>{{ _('You belong here!') }}</h2>
+      <h2 style="font-weight: bold;">{{ _('You belong here!') }}</h2>
       <br />
       <p>{{ _('Learning to code') }}
       </p>
@@ -189,28 +183,28 @@
     <div class="col-md-2"></div>
     </div>
     </div>
-    <div class="container bg-info" id="bottom-text-container" style="--bs-bg-opacity: .25;">
+    <div class="container col-md" id="bottom-text-container;" style="max-width: none; margin-left: 0; margin-right: 0;">
       <div class="row py-3" id="bottom-gray-text">
         <div class="col-md-2"></div>
         <div class="col-md">
         
-      <h2>{{ _('Why Coders Boost?') }}</h2>
+      <h2 style="color: #746f6f; font-weight: bold;">{{ _('Why Coders Boost?') }}</h2>
       <br />
-      <p>{{ _('Coders Boost is designed') }}
+      <p style="color: #746f6f;">{{ _('Coders Boost is designed') }}
       </p>
       <br/>
-      <h2>{{ _('What next?') }}</h2>
+      <h2 style="color: #746f6f;">{{ _('What next?') }}</h2>
       <br />
-      <p>
+      <p style="color: #746f6f;">
         {{ _('What next text') }}
       </p>
       <br />
-    </div>
+  </div>
     <div class="col-md-2"></div>
   </div>
 </div>
-<div class="row justify-content-center text-center">
-  <div class="col">Code by <a href="https://github.com/JLOtten/coders_boost">JLOtten</a> | Illustrations by <a
+<div class="row justify-content-center text-center bg-lt">
+  <div class="col">@2023<a href="https://github.com/JLOtten/coders_boost">JLOtten</a>| Flask/Jinja App, HTML, CSS & Bootstrap, JS, Python, PostgreSQL | Illustrations by <a
       href="https://icons8.com/illustrations">Icons8</a> and <a href="https://openai.com/dall-e-2/">DALL·E 2</a></div>
 </div>
 {% endblock %}
