@@ -110,65 +110,36 @@
   </div>
 </div>
 </div>
-<!--DALLE Image Carousel Starts Here-->
-<div class="container" id="carousel-container">
-  <div class="row m-3">
-    <div class="col-md">
-      <div class="d-flex justify-content-center">
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/MomCoding.png') }}" class="d-block w-100" alt="Mom coding with her two sons.">
-            </div>
-            <div class="carousel-item active">
-              <img src="{{ url_for('static', filename='images/SunsetCoders.png') }}" class="d-block w-100" alt="Two women of color pair programming.">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/WomanWheelchairCoding.png') }}" class="d-block w-100"
-                alt="A woman in a wheelchair coding.">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/TeenagerProgramming.png') }}" class="d-block w-100"
-                alt="A teenage boy of color coding.">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/GirlCoding.png') }}" class="d-block w-100" alt="A young girl of Asian descent coding.">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/PairProgramming.png') }}" class="d-block w-100" alt="Two young students coding in the same room.">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/VividPairProgramming.png') }}" class="d-block w-100"
-                alt="Two young men pair programming at the same computer.">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/cyberpunk.png') }}" class="d-block w-100" alt="Two young women of color coding together in front of a sunset.">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/BoyCoding.png') }}" class="d-block w-100" alt="A young Hispanic boy coding with his Grandmother.">
-            </div>
-            <div class="carousel-item">
-              <img src="{{ url_for('static', filename='images/BlindCoder.png') }}" class="d-block w-100" alt="A young vision impaired boy coding with his seeing eye dog.">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+<!--------------------------------DALLE Image Carousel Starts Here--------------------------------------->
+
+<div class="container" id="gallery">
+  <figure id="spinner">
+    
+     <img src="{{ url_for('static', filename='images/SunsetCoders.png') }}" alt="Two women of color pair programming.">
+                
+     <img src="{{ url_for('static', filename='images/WomanWheelchairCoding.png') }}" alt="A woman in a wheelchair coding.">
+           
+     <img src="{{ url_for('static', filename='images/GirlCoding.png') }}" alt="A young girl of Asian descent coding.">
+       
+     <img src="{{ url_for('static', filename='images/PairProgramming.png') }}" alt="Two young students coding in the same room.">
+            
+     <img src="{{ url_for('static', filename='images/VividPairProgramming.png') }}" alt="Two young men pair programming at the same computer.">
+            
+     <img src="{{ url_for('static', filename='images/cyberpunk.png') }}" alt="Two young women of color coding together in front of a sunset.">
+           
+     <img src="{{ url_for('static', filename='images/BoyCoding.png') }}" alt="A young Hispanic boy coding with his Grandmother.">
+           
+     <img src="{{ url_for('static', filename='images/BlindCoder.png') }}" alt="A young vision impaired boy coding with his seeing eye dog.">
+       
+     <a href="#" style="float: left" onclick="galleryspin('-')">◀</a>
+     <a href="#" style="float: right" onclick="galleryspin('')">▶</a>
+    </figure>
 </div>
-</figure>
-<!--DALLE Image Carousel ends here-->
-<figure>
+
+
+<!----------------------------------DALLE Image Carousel ends here------------------------------------------>
+
 <div class="container text-white" style="max-width: none; margin-left: 0; margin-right: 0; background: linear-gradient(to right, #8a28ebcd, #a157ebe1); transition: background 1s;">
   <div class="row py-3" id="about-text">
     <div class="col-md-2"></div>

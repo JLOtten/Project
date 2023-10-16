@@ -1,5 +1,6 @@
 body {
     font-family:'Titillium Web', sans-serif;
+    font-size: 1.5rem;
     
   }
 
@@ -10,33 +11,45 @@ h1{
 h2 {
     font-weight: 900;
 }
-.carousel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-     > * {
-       flex: 0 0 auto;
-    }
-  
-.figure {
-      width: $item-width;
-      transform-style: preserve-3d;
-      img {
-        width: 100%;
-        &:not(:first-of-type) {
-          display: none /* Just for now */
-        }
-      }
-    }
-  }
 
-  .carousel figure {
-    transform-origin: 50% 50% (-$apothem);
-    transform: rotateY(/* some amount here */rad);
-  }
-  
-  .carousel figure img:not(:first-of-type) {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
+div#gallery {
+	perspective: 1200px;
+}
+figure#spinner {
+	transform-style: preserve-3d;
+	min-height: 122px;
+	-webkit-transform-origin: 50% 50%;
+	transform-origin: 50% 50% -500px;
+	transition: 1s;
+}
+figure#spinner img {
+	width: 40%;
+	position: absolute;
+	left: 30%;
+	transform-origin-z: 50% 50% -500px;
+	outline: 1px solid transparent;
+}
+figure#spinner img:nth-child(1) {
+	transform: rotateY(0deg);
+}
+figure#spinner img:nth-child(2) {
+	transform: rotateY(-45deg);
+}
+figure#spinner img:nth-child(3) {
+	transform: rotateY(-90deg);
+}
+figure#spinner img:nth-child(4) {
+	transform: rotateY(-135deg);
+}
+figure#spinner img:nth-child(5) {
+	transform: rotateY(-180deg);
+}
+figure#spinner img:nth-child(6) {
+	transform: rotateY(-225deg);
+}
+figure#spinner img:nth-child(7) {
+	transform: rotateY(-270deg);
+}
+figure#spinner img:nth-child(8) {
+	transform: rotateY(-315deg);
+}
